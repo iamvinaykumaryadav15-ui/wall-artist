@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vibrant Client Portfolio | Animated & Interactive</title>
+
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="A vibrant, colorful, and interactive portfolio website with dynamic animations, a media gallery, and more.">
+    <meta property="og:title" content="Vibrant Client Portfolio">
+    <meta property="og:description" content="Explore our work in this animated and visually engaging portfolio.">
+    <meta property="og:image" content="https://placehold.co/1200x630/7c3aed/white?text=Our+Portfolio">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GSAP (GreenSock Animation Platform) & ScrollTrigger Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+    <!-- Custom Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand-primary': 'var(--color-primary)',
+                        'brand-secondary': 'var(--color-secondary)',
+                        'brand-accent': 'var(--color-accent)',
+                        'brand-bg': 'var(--color-bg)',
+                        'brand-text': 'var(--color-text)',
+                    },
+                    animation: {
+                        'gradient-wave': 'gradientWave 15s ease infinite',
+                        'ken-burns': 'kenBurns 20s ease-out infinite',
+                        'float-slow': 'floatSlow 6s ease-in-out infinite',
+                        'glow-border': 'glowBorder 4s ease-in-out infinite',
+                        'slide-in': 'slideIn 1s ease-out',
+                    },
+                    keyframes: {
+                        gradientWave: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        kenBurns: {
+                            '0%': { transform: 'scale(1) translate(0, 0)' },
+                            '50%': { transform: 'scale(1.1) translate(-2%, 2%)' },
+                            '100%': { transform: 'scale(1) translate(0, 0)' },
+                        },
+                        floatSlow: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
+                        },
+                        glowBorder: {
+                            '0%, 100%': { 'box-shadow': '0 0 20px var(--color-accent, #0ea5e9)' },
+                            '50%': { 'box-shadow': '0 0 35px var(--color-primary, #a855f7)' },
+                        },
+                        slideIn: {
+                            'from': { transform: 'translateY(30px)', opacity: '0' },
+                            'to': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <style>
+        /* Light Mode Color Scheme (Default) */
+        :root {
+            --color-primary: #a855f7; /* Purple */
+            --color-secondary: #ec4899; /* Pink */
+            --color-accent: #0ea5e9; /* Sky Blue */
+            --color-bg: #ffffff; /* White */
+            --color-text: #1f2937; /* Dark Gray */
+            --color-bg-darker: #f3f4f6; /* Light Gray */
+        }
+
+        /* Dark Mode Color Scheme */
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --color-primary: #c084fc; /* Light Purple */
+                --color-secondary: #f472b6; /* Light Pink */
+                --color-accent: #38bdf8; /* Light Sky Blue */
+                --color-bg: #111827; /* Dark Gray */
+                --color-text: #f3f4f6; /* Light Gray */
+                --color-bg-darker: #1f2937; /* Darker Gray */
+            }
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--color-bg);
+            color: var(--color-text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Gradient Backgrounds */
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+            background-size: 400% 400%;
+        }
+
+        /* Glowing Button Effect */
+        .glow-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .glow-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px var(--color-accent), 0 0 15px var(--color-primary);
+        }
+
+        /* Service Card Glow on Hover */
+        .service-card {
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-accent);
+            box-shadow: 0 0 30px -5px var(--color-accent);
+        }
+
+        /* Gallery Masonry Layout */
+        .gallery-container {
+            column-count: 1;
+            column-gap: 1.5rem; /* 24px */
+        }
+        @media (min-width: 768px) {
+            .gallery-container {
+                column-count: 2;
+            }
+        }
+        @media (min-width: 1024px) {
+            .gallery-container {
+                column-count: 3;
+            }
+        }
+        .gallery-item {
+            break-inside: avoid;
+            margin-bottom: 1.5rem; /* 24px */
+            border-radius: 0.75rem; /* 12px */
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
+            transition: all 0.4s ease;
+            transform: translateZ(0); /* Promotes to hardware layer */
+            /* opacity: 0; */ /* <-- I've removed this line. It was conflicting with the GSAP animation. */
+        }
+        
+        /* Gallery Item Hover Effect */
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(168, 85, 247, 0.3), rgba(236, 72, 153, 0.3));
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+        .gallery-item img, .gallery-item video {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img, .gallery-item:hover video {
+            transform: scale(1.05);
+        }
+
+        /* Lightbox Modal */
+        #lightbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.4s ease, visibility 0.4s ease;
+        }
+        #lightbox.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        #lightbox-content {
+            position: relative;
+            max-width: 90vw;
+            max-height: 90vh;
+            animation: slideIn 0.5s ease-out forwards;
+        }
+        #lightbox-content img, #lightbox-content video {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            max-height: 90vh;
+            border-radius: 0.5rem;
+        }
+        #close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        #close-lightbox:hover {
+            transform: scale(1.1);
+        }
+
+        /* Reviews Carousel */
+        .review-carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .review-card {
+            flex: 0 0 100%;
+        }
+        @media (min-width: 768px) {
+            .review-card {
+                flex: 0 0 50%;
+            }
+        }
+        @media (min-width: 1024px) {
+            .review-card {
+                flex: 0 0 33.333%;
+            }
+        }
+
+        /* Respects Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .gsap-animated {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: var(--color-bg-darker);
+        }
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--color-primary);
+            border-radius: 20px;
+            border: 2px solid var(--color-bg-darker);
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background-color: var(--color-secondary);
+        }
+
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="header">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-3xl font-bold gradient-bg bg-clip-text text-transparent animate-gradient-wave">
+                Wall Art
+            </a>
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-brand-text focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+            </button>
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="hover:text-brand-primary transition-colors">About</a>
+                <a href="#services" class="hover:text-brand-primary transition-colors">Services</a>
+                <a href="#gallery" class="hover:text-brand-primary transition-colors">Gallery</a>
+                <a href="#reviews" class="hover:text-brand-primary transition-colors">Reviews</a>
+                <a href="#contact" class="px-5 py-2 rounded-full text-white gradient-bg animate-gradient-wave glow-button">
+                    Get in Touch
+                </a>
+            </div>
+        </nav>
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-bg-darker shadow-lg absolute top-full left-0 w-full">
+            <a href="#about" class="block px-6 py-3 text-center hover:bg-brand-primary/20">About</a>
+            <a href="#services" class="block px-6 py-3 text-center hover:bg-brand-primary/20">Services</a>
+            <a href="#gallery" class="block px-6 py-3 text-center hover:bg-brand-primary/20">Gallery</a>
+            <a href="#reviews" class="block px-6 py-3 text-center hover:bg-brand-primary/20">Reviews</a>
+            <a href="#contact" class="block px-6 py-4 text-center text-white gradient-bg animate-gradient-wave">
+                Get in Touch
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen w-full flex items-center justify-center text-center text-white overflow-hidden">
+        <!-- Background Video -->
+        <!-- ADMIN NOTE: Replace 'src' with your video file from the Google Drive. -->
+        <video 
+            playsinline 
+            autoplay 
+            muted 
+            loop 
+            class="absolute top-0 left-0 w-full h-full object-cover z-0 animate-ken-burns"
+            poster="https://placehold.co/1920x1080/111827/333?text=Loading+Video..."
+            aria-label="Background video of creative work"
+        >
+            <!-- Example video. Replace with your own. -->
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-abstract-video-of-a-man-with-head-down-4204-large.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+
+        <!-- Overlay -->
+        <div class="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
+        
+        <!-- Animated Gradient Overlay -->
+        <div class="absolute top-0 left-0 w-full h-full z-20 opacity-30 gradient-bg animate-gradient-wave"></div>
+
+        <!-- Content -->
+        <div class="relative z-30 p-6 max-w-3xl gsap-animated" data-anim="hero-content">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight">
+                Vibrant. Colorful. Alive.
+            </h1>
+            <p class="text-lg md:text-2xl mb-8 font-light">
+                We craft stunning digital experiences that tell your story with motion and life.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#contact" class="px-8 py-4 rounded-full text-white text-lg font-semibold gradient-bg animate-gradient-wave glow-button">
+                    Get in Touch
+                </a>
+                <a href="#gallery" class="px-8 py-4 rounded-full text-white text-lg font-semibold bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300">
+                    Explore Work
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content Wrapper -->
+    <main class="container mx-auto px-6 py-24">
+
+        <!-- About Section -->
+        <section id="about" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-24 overflow-hidden">
+            <div class="gsap-animated" data-anim="fade-right">
+                <!-- ADMIN NOTE: Replace 'src' with an image or video from your drive. -->
+                <img src="https://placehold.co/600x600/a855f7/white?text=About+Us" alt="Our Team" class="rounded-xl shadow-2xl w-full h-auto object-cover">
+            </div>
+            <div class="gsap-animated" data-anim="fade-left">
+                <span class="text-brand-primary font-semibold">Our Mission</span>
+                <h2 class="text-4xl md:text-5xl font-bold my-4">We Bring Brands to Life</h2>
+                <p class="text-lg text-brand-text/80 leading-relaxed">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo nec libero facilisis, ac dapibus dolor feugiat. Vivamus in sem quis sapien consequat efficitur.
+                    <br><br>
+                    Our passion is combining art and technology to create unforgettable digital stories that captivate and convert.
+                </p>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="my-32 text-center overflow-hidden">
+            <span class="text-brand-primary font-semibold gsap-animated" data-anim="fade-up">What We Do</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated" data-anim="fade-up" data-delay="0.1">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <!-- Service Card 1 -->
+                <div class="service-card bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.2">
+                    <div class="text-5xl mb-4 text-brand-primary">Icon1</div>
+                    <h3 class="text-2xl font-semibold mb-3">Web Design</h3>
+                    <p class="text-brand-text/80">Stunning, responsive websites built for performance and visual impact.</p>
+                </div>
+                <!-- Service Card 2 -->
+                <div class="service-card bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.4">
+                    <div class="text-5xl mb-4 text-brand-secondary">Icon2</div>
+                    <h3 class="text-2xl font-semibold mb-3">Motion Graphics</h3>
+                    <p class="text-brand-text/80">Engaging video animations that explain and entertain.</p>
+                </div>
+                <!-- Service Card 3 -->
+                <div class="service-card bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.6">
+                    <div class="text-5xl mb-4 text-brand-accent">Icon3</div>
+                    <h3 class="text-2xl font-semibold mb-3">Brand Identity</h3>
+                    <p class="text-brand-text/80">Crafting unique logos and styles that resonate with your audience.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="my-32 overflow-hidden">
+            <span class="text-brand-primary font-semibold gsap-animated" data-anim="fade-up">Our Work</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated" data-anim="fade-up" data-delay="0.1">Animated Gallery</h2>
+            <p class="text-lg text-brand-text/80 mb-12 max-w-2xl gsap-animated" data-anim="fade-up" data-delay="0.2">
+                A showcase of our projects. Click any item to see it in detail.
+            </p>
+
+            <!-- 
+                ADMIN NOTE: 
+                To add new items to the gallery, copy one of the 'div.gallery-item' blocks.
+                - For an IMAGE: Update the 'data-src' on the div and the 'src' on the img.
+                - For a VIDEO: 
+                    1. Add 'data-video-src="YOUR_VIDEO_URL.mp4"' to the 'div.gallery-item'.
+                    2. Update the 'src' on the 'img' to be a thumbnail/poster for the video.
+                - Animation: Change 'data-anim-gallery' to one of: 
+                  "fade-up", "slide-left", "slide-right", "zoom-in", "blur-in"
+            -->
+            <div class="gallery-container">
+                
+                <!-- Gallery Item 1 (Image) -->
+                <div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="fade-up" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipNNkElcJ99CONtGZ6NLFV97TBW-3dW3xqrPgDaj=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNNkElcJ99CONtGZ6NLFV97TBW-3dW3xqrPgDaj=s1360-w1360-h1020-rw" alt="Gallery Image 1" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 2 (Image) -->
+                <div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="slide-left" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw" alt="Gallery Image 2" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 3 (Image) -->
+                <div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="zoom-in" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipOHh6Y2E9pFSbbIyf3JOeKPOnOfaqhuHHbebjWp=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipOHh6Y2E9pFSbbIyf3JOeKPOnOfaqhuHHbebjWp=s1360-w1360-h1020-rw" alt="Gallery Image 3" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 4 (Image) -->
+                <div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="slide-right" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw" alt="Gallery Image 4" loading="lazy">
+                </div>
+                
+                <!-- Gallery Item 5 (Image) -->
+                <div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="blur-in" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipMEQKlJmWsEzF-6u7h0WiwHg17GcJnstAN0FQtS=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipMEQKlJmWsEzF-6u7h0WiwHg17GcJnstAN0FQtS=s1360-w1360-h1020-rw" alt="Gallery Image 5" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 6 (Image) -->
+                <div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="fade-up" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipNzSGaMgxKyG8AuCMurYRs_PvD8TJp5sLf07Cwq=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNzSGaMgxKyG8AuCMurYRs_PvD8TJp5sLf07Cwq=s1360-w1360-h1020-rw" alt="Gallery Image 6" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 7 (Image) -->
+                <div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="slide-left" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipOTHyUzlCYXD4Qeei8MSdK6atEnG_5vDaGBmTSA=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipOTHyUzlCYXD4Qeei8MSdK6atEnG_5vDaGBmTSA=s1360-w1360-h1020-rw" alt="Gallery Image 7" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 8 (Image) -->
+                <div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="zoom-in" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipNee1GjeqCyOs4smleie5H9eXRdslzJi0hVwEAv=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNee1GjeqCyOs4smleie5H9eXRdslzJi0hVwEAv=s1360-w1360-h1020-rw" alt="Gallery Image 8" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 9 (Image) -->
+                <div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="blur-in" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipOAKZ5vWcWoD3BY-lQkw9k36d2Y5CMGCp1zQ0Kf=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipOAKZ5vWcWoD3BY-lQkw9k36d2Y5CMGCp1zQ0Kf=s1360-w1360-h1020-rw" alt="Gallery Image 9" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 10 (Small Video) -->
+                <div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="fade-up" 
+                     data-src="https://placehold.co/600x450/f97316/white?text=Project+10+(Video)"
+                     data-video-src="https://assets.mixkit.co/videos/preview/mixkit-abstract-glowing-lines-loop-4212-large.mp4">
+                    <img src="https://placehold.co/600x450/f97316/white?text=Project+10+(Video)" alt="Gallery Video 3" loading="lazy">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 p-4 bg-black/50 rounded-full">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 11 (Medium Image) -->
+                <div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="slide-right" 
+                     data-src="https://placehold.co/600x600/84cc16/white?text=Project+11">
+                    <img src="https://placehold.co/600x600/84cc16/white?text=Project+11" alt="Gallery Image 11" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 12 (Tall Image) -->
+                <div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="fade-up" 
+                     data-src="https://placehold.co/600x850/3b82f6/white?text=Project+12">
+                    <img src="https://placehold.co/600x850/3b82f6/white?text=Project+12" alt="Gallery Image 12" loading="lazy">
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Map Section -->
+        <section id="map" class="my-32 overflow-hidden">
+            <span class="text-brand-primary font-semibold gsap-animated" data-anim="fade-up">Find Us</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated" data-anim="fade-up" data-delay="0.1">Our Location</h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <div class="md:col-span-2 rounded-xl overflow-hidden shadow-2xl gsap-animated" data-anim="fade-right">
+                    <!-- 
+                        ADMIN NOTE: 
+                        This is a Google Maps embed. Replace the 'src' attribute with your own.
+                        1. Go to Google Maps.
+                        2. Find your location.
+                        3. Click "Share" -> "Embed a map".
+                        4. Copy the 'src' URL and paste it below.
+                        
+                        For a dynamic JS map, you'll need the Google Maps JavaScript API key.
+                        
+                        FALLBACK (OpenStreetMap - No API key needed):
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            scrolling="no" 
+                            marginheight="0" 
+                            marginwidth="0" 
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=-0.13033,51.50325,-0.12233,51.50925&layer=mapnik&marker=51.50625,-0.12633"
+                            class="min-h-[450px]"
+                        ></iframe>
+                    -->
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.1481134253303!2d77.237274!3d28.564251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce25b5b03f0b3%3A0xe545c61833930e4!2sWall%20Art!5e0!3m2!1sen!2sin!4v1730465138338!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="450" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy" 
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Google Map of our location"
+                    ></iframe>
+                </div>
+                <div class="bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="fade-left">
+                    <h3 class="text-2xl font-semibold mb-4">Visit Us</h3>
+                    <address class="not-italic text-brand-text/80 mb-6">
+                        A-42, Greater Kailash-1, Block E<br>
+                        Zamrudpur, Greater Kailash<br>
+                        New Delhi, Delhi 110048
+                    </address>
+                    <h4 class="font-semibold text-lg">Hours</h4>
+                    <p class="text-brand-text/80 mb-6">
+                        Open 24 hours
+                    </p>
+                    <a 
+                        href="https://maps.google.com/?q=A-42,+Greater+Kailash-1,+Block+E,+Zamrudpur,+Greater+Kailash,+New+Delhi,+Delhi+110048"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="inline-block w-full text-center px-6 py-3 rounded-full text-white font-semibold gradient-bg animate-gradient-wave glow-button"
+                    >
+                        Get Directions
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="my-32 overflow-hidden">
+            <span class="text-brand-primary font-semibold gsap-animated" data-anim="fade-up">Contact</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated" data-anim="fade-up" data-delay="0.1">Let's Create Together</h2>
+            <p class="text-lg text-brand-text/80 mb-12 max-w-2xl gsap-animated" data-anim="fade-up" data-delay="0.2">
+                Have an idea? We'd love to hear about it. Fill out the form or reach out directly.
+            </p>
+
+            <form action="#" method="POST" class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="gsap-animated" data-anim="fade-up" data-delay="0.3">
+                    <label for="name" class="block text-sm font-medium text-brand-text/80 mb-2">Name</label>
+                    <input type="text" id="name" name="name" required
+                           class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all">
+                </div>
+                <div class="gsap-animated" data-anim="fade-up" data-delay="0.4">
+                    <label for="email" class="block text-sm font-medium text-brand-text/80 mb-2">Email</label>
+                    <input type="email" id="email" name="email" required
+                           class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all">
+                </div>
+                <div class="md:col-span-2 gsap-animated" data-anim="fade-up" data-delay="0.5">
+                    <label for="phone" class="block text-sm font-medium text-brand-text/80 mb-2">Phone (Optional)</label>
+                    <input type="tel" id="phone" name="phone"
+                           class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all">
+                </div>
+                <div class="md:col-span-2 gsap-animated" data-anim="fade-up" data-delay="0.6">
+                    <label for="message" class="block text-sm font-medium text-brand-text/80 mb-2">Message</label>
+                    <textarea id="message" name="message" rows="5" required
+                              class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all"></textarea>
+                </div>
+                <div class="md:col-span-2 text-center gsap-animated" data-anim="fade-up" data-delay="0.7">
+                    <button type="submit"
+                            class="px-10 py-4 rounded-full text-white text-lg font-semibold gradient-bg animate-gradient-wave glow-button">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+            
+            <div class="text-center mt-12 space-y-4">
+                 <p class="text-brand-text/80 gsap-animated" data-anim="fade-up" data-delay="0.8">Or reach us on:</p>
+                 <div class="flex justify-center gap-6">
+                     <!-- ADMIN NOTE: Replace '#' with your WhatsApp link -->
+                     <a href="#" class="px-6 py-3 rounded-full font-semibold bg-green-500 text-white hover:bg-green-600 transition-all shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.9">
+                         WhatsApp Us
+                     </a>
+                     <!-- ADMIN NOTE: Replace '1234567890' with your phone number -->
+                     <a href="tel:09999226846" class="px-6 py-3 rounded-full font-semibold bg-brand-accent text-white hover:bg-brand-accent/80 transition-all shadow-lg gsap-animated" data-anim="pop-in" data-delay="1.0">
+                         Call 099992 26846
+                     </a>
+                 </div>
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="gradient-bg animate-gradient-wave text-white py-16">
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
+            <div>
+                <a href="#" class="text-3xl font-bold">
+                    Wall Art
+                </a>
+                <p class="mt-4 text-white/80">Crafting digital dreams into reality.</p>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                <ul class="space-y-2">
+                    <li><a href="#about" class="hover:underline text-white/80">About</a></li>
+                    <li><a href="#services" class="hover:underline text-white/80">Services</a></li>
+                    <li><a href="#gallery" class="hover:underline text-white/80">Gallery</a></li>
+                    <li><a href="#contact" class="hover:underline text-white/80">Contact</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-xl font-semibold mb-4">Connect</h4>
+                <div class="flex justify-center md:justify-start space-x-4">
+                    <!-- ADMIN NOTE: Replace '#' with your social media links -->
+                    <a href="#" aria-label="Instagram" class="text-2xl hover:text-brand-secondary transition-all">Insta</a>
+                    <a href="#" aria-label="LinkedIn" class="text-2xl hover:text-brand-secondary transition-all">Linked</a>
+                    <a href="#" aria-label="Twitter" class="text-2xl hover:text-brand-secondary transition-all">Twit</a>
+                </div>
+            </div>
+        </div>
+        <div class="container mx-auto px-6 mt-12 text-center text-white/70 border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; 2025 Wall Art. All rights reserved.</p>
+            <a href="#hero" class="mt-4 md:mt-0 px-4 py-2 rounded-full bg-white/20 hover:bg-white/30 transition-all">
+                Back to Top &uarr;
+            </a>
+        </div>
+    </footer>
+
+    <!-- Lightbox Modal -->
+    <div id="lightbox">
+        <button id="close-lightbox" title="Close">&times;</button>
+        <div id="lightbox-content">
+            <!-- Content (image or video) will be injected here by JS -->
+        </div>
+    </div>
+
+
+    <!-- Application JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // --- GSAP & ScrollTrigger Setup ---
+            gsap.registerPlugin(ScrollTrigger);
+
+            // --- Header Scroll Effect ---
+            const header = document.getElementById('header');
+            ScrollTrigger.create({
+                start: 'top -80',
+                end: 99999,
+                onUpdate: (self) => {
+                    if (self.direction === 1) { // Scrolling Down
+                        header.classList.add('py-2', 'bg-brand-bg/80', 'dark:bg-brand-bg/80', 'backdrop-blur-lg', 'shadow-lg');
+                        header.classList.remove('py-4');
+                    } else { // Scrolling Up
+                        if (window.scrollY < 80) {
+                            header.classList.remove('py-2', 'bg-brand-bg/80', 'dark:bg-brand-bg/80', 'backdrop-blur-lg', 'shadow-lg');
+                            header.classList.add('py-4');
+                        }
+                    }
+                }
+            });
+
+            // --- Mobile Menu Toggle ---
+            const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+            // Close menu on link click
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                });
+            });
+
+
+            // --- General GSAP Scroll-Triggered Animations ---
+            gsap.utils.toArray('.gsap-animated').forEach(elem => {
+                const animType = elem.dataset.anim;
+                const delay = parseFloat(elem.dataset.delay) || 0;
+                
+                let animProps = {
+                    opacity: 0,
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: 'top 85%', // Start animation when 85% from top
+                        toggleActions: 'play none none none',
+                    },
+                    delay: delay
+                };
+
+                if (animType === 'hero-content') {
+                    // Special case for hero content (no ScrollTrigger)
+                    delete animProps.scrollTrigger;
+                    gsap.from(elem, { opacity: 0, y: 30, duration: 1, delay: 0.5, ease: 'power3.out' });
+                    return; // Skip rest of the logic
+                }
+                if (animType === 'fade-up') {
+                    animProps.y = 50;
+                } else if (animType === 'fade-left') {
+                    animProps.x = 100;
+                } else if (animType === 'fade-right') {
+                    animProps.x = -100;
+                } else if (animType === 'pop-in') {
+                    animProps.scale = 0.8;
+                }
+
+                gsap.from(elem, animProps);
+            });
+
+
+            // --- Gallery GSAP Animations ---
+            gsap.utils.toArray('.gallery-item').forEach(item => {
+                const animType = item.dataset.animGallery || 'fade-up';
+                let animProps = {
+                    opacity: 0,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: 'top 90%',
+                        toggleActions: 'play none none none',
+                    },
+                    duration: 0.8,
+                    ease: 'power3.out'
+                };
+
+                if (animType === 'fade-up') {
+                    animProps.y = 60;
+                } else if (animType === 'slide-left') {
+                    animProps.x = 100;
+                } else if (animType === 'slide-right') {
+                    animProps.x = -100;
+                } else if (animType === 'zoom-in') {
+                    animProps.scale = 0.8;
+                } else if (animType === 'blur-in') {
+                    animProps.filter = 'blur(10px)';
+                    animProps.scale = 1.05;
+                }
+                
+                /* // Set initial state - REMOVED this line as it's no longer needed after the CSS fix above.
+                gsap.set(item, { opacity: 1 }); // GSAP needs this to animate *from* */
+                gsap.from(item, animProps);
+
+                // Add tilt effect on hover
+                item.addEventListener('mousemove', (e) => {
+                    const rect = item.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    const rotateX = -y / 20; // Max rotation
+                    const rotateY = x / 20;
+                    gsap.to(item, {
+                        rotationX: rotateX,
+                        rotationY: rotateY,
+                        transformPerspective: 1000,
+                        scale: 1.03,
+                        ease: 'power1.out',
+                        duration: 0.4
+                    });
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    gsap.to(item, {
+                        rotationX: 0,
+                        rotationY: 0,
+                        scale: 1,
+                        ease: 'power1.out',
+                        duration: 0.4
+                    });
+                });
+            });
+
+            // --- Lightbox Logic ---
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = document.getElementById('lightbox-content');
+            const closeLightboxBtn = document.getElementById('close-lightbox');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const videoSrc = item.dataset.videoSrc;
+                    const imgSrc = item.dataset.src;
+                    
+                    lightboxContent.innerHTML = ''; // Clear content
+
+                    if (videoSrc) {
+                        // It's a video
+                        const video = document.createElement('video');
+                        video.src = videoSrc;
+                        video.controls = true;
+                        video.autoplay = true;
+                        video.loop = true;
+                        lightboxContent.appendChild(video);
+                    } else if (imgSrc) {
+                        // It's an image
+                        const img = document.createElement('img');
+                        img.src = imgSrc;
+                        img.alt = "Lightbox image";
+                        lightboxContent.appendChild(img);
+                    }
+
+                    lightbox.classList.add('active');
+                    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                });
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                lightboxContent.innerHTML = ''; // Stop video playback
+                document.body.style.overflow = 'auto';
+            }
+
+            closeLightboxBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                // Close if clicking on the background, not the content
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            // --- Reviews Carousel Logic ---
+            const carousel = document.getElementById('review-carousel');
+            const prevBtn = document.getElementById('prev-review');
+            const nextBtn = document.getElementById('next-review');
+            const reviewCards = document.querySelectorAll('.review-card');
+            
+            // Check if carousel elements exist before proceeding
+            if (carousel && prevBtn && nextBtn && reviewCards.length > 0) {
+                let currentIndex = 0;
+                let totalItems = reviewCards.length;
+                let itemsToSlide = 1; // Default
+                
+                function updateItemsToSlide() {
+                    if (window.innerWidth >= 1024) {
+                        itemsToSlide = 3;
+                    } else if (window.innerWidth >= 768) {
+                        itemsToSlide = 2;
+                    } else {
+                        itemsToSlide = 1;
+                    }
+                    // Ensure totalItems is correct if it's not a multiple
+                    totalItems = Math.ceil(reviewCards.length / itemsToSlide) * itemsToSlide;
+                    // Re-append clones if needed to ensure smooth looping
+                    setupCarouselClones();
+                }
+
+                // Clone items for infinite loop illusion
+                function setupCarouselClones() {
+                    // Clear existing clones
+                    carousel.querySelectorAll('.clone').forEach(clone => clone.remove());
+                    
+                    if (reviewCards.length <= itemsToSlide) {
+                         prevBtn.style.display = 'none';
+                         nextBtn.style.display = 'none';
+                         return;
+                    } else {
+                        prevBtn.style.display = 'block';
+                        nextBtn.style.display = 'block';
+                    }
+
+                    // Add clones to the end
+                    for(let i = 0; i < itemsToSlide; i++) {
+                        const clone = reviewCards[i].cloneNode(true);
+                        clone.classList.add('clone');
+                        carousel.appendChild(clone);
+                    }
+                    // Add clones to the beginning
+                    for(let i = reviewCards.length - 1; i >= reviewCards.length - itemsToSlide; i--) {
+                        const clone = reviewCards[i].cloneNode(true);
+                        clone.classList.add('clone');
+                        carousel.prepend(clone);
+                    }
+
+                    // Initial position
+                    currentIndex = itemsToSlide;
+                    carousel.style.transition = 'none';
+                    carousel.style.transform = `translateX(-${currentIndex * (100 / itemsToSlide)}%)`;
+                }
+
+
+                function moveCarousel(direction) {
+                    carousel.style.transition = 'transform 0.5s ease-in-out';
+                    currentIndex += direction;
+                    carousel.style.transform = `translateX(-${currentIndex * (100 / itemsToSlide)}%)`;
+                    
+                    // Loop check
+                    if (currentIndex >= reviewCards.length + itemsToSlide) {
+                        setTimeout(() => {
+                            carousel.style.transition = 'none';
+                            currentIndex = itemsToSlide;
+                            carousel.style.transform = `translateX(-${currentIndex * (100 / itemsToSlide)}%)`;
+                        }, 500);
+                    } else if (currentIndex <= 0) {
+                         setTimeout(() => {
+                            carousel.style.transition = 'none';
+                            currentIndex = reviewCards.length;
+                            carousel.style.transform = `translateX(-${currentIndex * (100 / itemsToSlide)}%)`;
+                        }, 500);
+                    }
+                }
+
+                nextBtn.addEventListener('click', () => moveCarousel(1));
+                prevBtn.addEventListener('click', () => moveCarousel(-1));
+
+                // Auto-play
+                let autoPlayInterval = setInterval(() => moveCarousel(1), 5000);
+                carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+                carousel.addEventListener('mouseleave', () => autoPlayInterval = setInterval(() => moveCarousel(1), 5000));
+                
+                // Initial & resize setup
+                updateItemsToSlide();
+                window.addEventListener('resize', updateItemsToSlide);
+            }
+
+        });
+    </script>
+</body>
+</html>
+
