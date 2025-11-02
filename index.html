@@ -3,31 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wall Artist Portfolio | Creative Mural Design</title>
+    <title>Vibrant Client Portfolio | Animated & Interactive</title>
 
-    <!-- Meta Tags for SEO -->
-    <meta name="description" content="Explore the portfolio of a creative wall artist and mural designer. Specializing in custom, hand-painted murals for homes and businesses.">
-    <meta name="keywords" content="wall artist, mural design, creative art studio, muralist, portfolio, street art, hand-painted">
-    <meta property="og:title" content="Wall Artist Portfolio | Creative Mural Design">
-    <meta property="og:description" content="Bringing walls to life with vibrant, custom-designed murals.">
-    <meta property="og:image" content="https://placehold.co/1200x630/FFD400/000000?text=Wall+Art+Portfolio">
+    <!-- Meta Tags for SEO --><meta name="description" content="A vibrant, colorful, and interactive portfolio website with dynamic animations, a media gallery, and more.">
+    <meta property="og:title" content="Vibrant Client Portfolio">
+    <meta property="og:description" content="Explore our work in this animated and visually engaging portfolio.">
+    <meta property="og:image" content="https://placehold.co/1200x630/7c3aed/white?text=Our+Portfolio">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Google Fonts: Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Google Fonts: Inter --><link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
 
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Swiper.js CSS (Added for Lightbox Carousel) --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-    <!-- GSAP (GreenSock Animation Platform) & ScrollTrigger Plugin -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- GSAP (GreenSock Animation Platform) & ScrollTrigger Plugin --><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/SplitText.min.js"></script> --> <!-- Removed SplitText as it's a premium plugin -->
 
-    <!-- Custom Tailwind Configuration -->
+    <!-- Swiper.js JS (Added for Lightbox Carousel) --><script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script>
         tailwind.config = {
             theme: {
@@ -37,38 +33,40 @@
                         sketch: ['Kalam', 'cursive'],
                     },
                     colors: {
-                        'brand-primary': 'var(--color-primary)', // #FFD400
-                        'brand-secondary': 'var(--color-secondary)', // #000000
-                        'brand-accent': 'var(--color-accent)', // #FFFFFF
-                        'brand-bg': 'var(--color-bg)', // #FFFFFF
-                        'brand-text': 'var(--color-text)', // #000000
-                        'brand-bg-darker': 'var(--color-bg-darker)', // #F9FAFB
+                        'brand-primary': 'var(--color-primary)',
+                        'brand-secondary': 'var(--color-secondary)',
+                        'brand-accent': 'var(--color-accent)',
+                        'brand-bg': 'var(--color-bg)',
+                        'brand-text': 'var(--color-text)',
                     },
                     animation: {
-                        'float-slow': 'floatSlow 8s ease-in-out infinite',
-                        'float-medium': 'floatSlow 12s ease-in-out infinite',
-                        'float-fast': 'floatSlow 6s ease-in-out infinite',
-                        'draw-stroke': 'drawStroke 2s ease-out forwards',
-                        'brush-border': 'brushBorder 0.5s ease-out forwards',
-                        'brush-underline': 'brushUnderline 1s ease-out forwards',
-                        // 'spin-slow': 'spin 10s linear infinite', // REMOVED
+                        'gradient-wave': 'gradientWave 15s ease infinite',
+                        'ken-burns': 'kenBurns 20s ease-out infinite',
+                        'float-slow': 'floatSlow 6s ease-in-out infinite',
+                        'glow-border': 'glowBorder 4s ease-in-out infinite',
+                        'slide-in': 'slideIn 1s ease-out',
                     },
                     keyframes: {
+                        gradientWave: {
+                            '0%, 100%': { backgroundPosition: '0% 50%' },
+                            '50%': { backgroundPosition: '100% 50%' },
+                        },
+                        kenBurns: {
+                            '0%': { transform: 'scale(1) translate(0, 0)' },
+                            '50%': { transform: 'scale(1.1) translate(-2%, 2%)' },
+                            '100%': { transform: 'scale(1) translate(0, 0)' },
+                        },
                         floatSlow: {
-                            '0%, 100%': { transform: 'translateY(0) rotate(0deg)' },
-                            '50%': { transform: 'translateY(-20px) rotate(3deg)' },
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-20px)' },
                         },
-                        drawStroke: {
-                            'from': { 'stroke-dashoffset': '1000' },
-                            'to': { 'stroke-dashoffset': '0' },
+                        glowBorder: {
+                            '0%, 100%': { 'box-shadow': '0 0 20px var(--color-accent, #0ea5e9)' },
+                            '50%': { 'box-shadow': '0 0 35px var(--color-primary, #a855f7)' },
                         },
-                        brushBorder: {
-                            'from': { 'stroke-dashoffset': '2000' },
-                            'to': { 'stroke-dashoffset': '0' },
-                        },
-                        brushUnderline: {
-                            'from': { 'stroke-dashoffset': '500' },
-                            'to': { 'stroke-dashoffset': '0' },
+                        slideIn: {
+                            'from': { transform: 'translateY(30px)', opacity: '0' },
+                            'to': { transform: 'translateY(0)', opacity: '1' },
                         }
                     }
                 }
@@ -76,106 +74,64 @@
         }
     </script>
 
-    <!-- Custom Styles -->
-    <style>
-        /* Color Scheme */
+    <!-- Custom Styles --><style>
+        /* Light Mode Color Scheme (Default) */
         :root {
-            --color-primary: #FFD400; /* Yellow */
-            --color-secondary: #000000; /* Black */
-            --color-accent: #FFFFFF; /* White */
-            --color-bg: #FFFFFF; /* White */
-            --color-text: #000000; /* Black */
-            --color-bg-darker: #F9FAFB; /* Light Gray */
+            --color-primary: #3b82f6; /* Blue */
+            --color-secondary: #d946ef; /* Magenta */
+            --color-accent: #22c55e; /* Green */
+            --color-bg: #ffffff; /* White */
+            --color-text: #1f2937; /* Dark Gray */
+            --color-bg-darker: #f3f4f6; /* Light Gray */
         }
 
-        /* Dark Mode Color Scheme (Inverted) */
+        /* Dark Mode Color Scheme */
         @media (prefers-color-scheme: dark) {
             :root {
-                --color-primary: #FFD400;
-                --color-secondary: #FFFFFF; /* White */
-                --color-accent: #000000; /* Black */
-                --color-bg: #111111; /* Near Black */
-                --color-text: #FFFFFF; /* White */
-                --color-bg-darker: #222222; /* Dark Gray */
+                --color-primary: #60a5fa; /* Light Blue */
+                --color-secondary: #e879f9; /* Light Magenta */
+                --color-accent: #4ade80; /* Light Green */
+                --color-bg: #111827; /* Dark Gray */
+                --color-text: #f3f4f6; /* Light Gray */
+                --color-bg-darker: #1f2937; /* Darker Gray */
             }
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: var(--color-bg);
+            background-color: #facc15; /* Changed to solid yellow */
             color: var(--color-text);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
 
-        /* Hero Background */
-        #hero {
-            background-color: var(--color-primary);
+        /* Gradient Backgrounds - Still defined but not used for main body */
+        .gradient-bg {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
+            background-size: 400% 400%;
         }
 
-        /* Doodle SVG Styles */
-        .doodle {
-            position: absolute;
-            opacity: 0; /* Hidden by default, made visible by GSAP */
+        /* Glowing Button Effect */
+        .glow-button {
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
         }
-        .doodle path, .doodle line, .doodle polyline, .doodle rect, .doodle circle {
-            stroke: var(--color-secondary);
-            stroke-width: 2;
-            fill: none;
-            stroke-dasharray: 1000;
-            stroke-dashoffset: 1000;
-        }
-
-        /* Class to trigger draw animation */
-        .draw-animation {
-            animation: drawStroke 2s ease-out 1s forwards;
+        .glow-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 0 25px var(--color-accent), 0 0 15px var(--color-primary);
         }
 
-        /* FIX: Override doodle stroke for dark mode to be black, as it's on a yellow bg */
-        @media (prefers-color-scheme: dark) {
-            .doodle path, .doodle line, .doodle polyline, .doodle rect, .doodle circle {
-                stroke: var(--color-accent); /* Use black in dark mode */
-            }
+        /* Service Card Glow on Hover */
+        .service-card {
+            border: 2px solid transparent;
+            transition: all 0.4s ease;
         }
-
-        /* --- NEW: Slideshow Section Styles --- */
-        /* REMOVED */
-        /* --- End Slideshow Styles --- */
-
-
-        /* Gallery Item Hover Effect (Brush Border) */
-        .gallery-item .brush-border-svg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        .gallery-item .brush-border-svg path {
-            fill: none;
-            stroke: var(--color-primary);
-            stroke-width: 8;
-            stroke-dasharray: 2000;
-            stroke-dashoffset: 2000;
-        }
-        .gallery-item:hover .brush-border-svg {
-            opacity: 1;
-            animation: brushBorder 0.7s ease-out forwards;
-        }
-        .gallery-item:hover img {
-            transform: scale(1.05);
-            filter: brightness(1.05); /* MODIFICATION: Added brightness */
-        }
-        /* MODIFICATION: Added caption styles */
-        .gallery-caption {
-            z-index: 11;
-            transition: opacity 0.4s ease;
-        }
-        .gallery-item:hover .gallery-caption {
-            opacity: 1;
+        .service-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--color-accent);
+            box-shadow: 0 0 30px -5px var(--color-accent);
         }
 
         /* Gallery Masonry Layout */
@@ -200,60 +156,34 @@
             overflow: hidden;
             box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
             transition: all 0.4s ease;
-            transform: translateZ(0); /* Promotes to new layer for performance */
+            transform: translateZ(0); /* Promotes to hardware layer */
         }
-        .gallery-item img {
+        
+        /* Gallery Item Hover Effect */
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(217, 70, 239, 0.3)); /* Updated gradient for overlay */
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+        .gallery-item img, .gallery-item video {
             width: 100%;
             height: auto;
             display: block;
-            transition: transform 0.4s ease, filter 0.4s ease; /* MODIFICATION: Added filter transition */
+            transition: transform 0.4s ease;
         }
-
-        /* --- NEW: Gallery Slideshow Item --- */
-        .gallery-item[data-slideshow="true"] {
-            /* Ensure it's a positioning context */
-            position: relative;
-            /* Give it a minimum height to avoid collapse before JS load */
-            min-height: 250px;
+        .gallery-item:hover img, .gallery-item:hover video {
+            transform: scale(1.05);
         }
-        .gallery-item-slideshow-inner {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-            border-radius: 0.75rem; /* Match parent */
-        }
-        .gallery-item-slideshow-inner .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-size: cover;
-            background-position: center;
-            opacity: 0;
-            transform: translateZ(0);
-        }
-        .gallery-item-loader {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px; /* Smaller for gallery item */
-            height: 40px;
-            border: 4px solid var(--color-primary);
-            border-top-color: transparent;
-            border-radius: 50%;
-            animation: spin 1s linear infinite; /* 'spin' is already defined by Tailwind */
-            z-index: 5;
-        }
-        /* Ensure border and caption are on top */
-        .gallery-item .brush-border-svg { z-index: 10; }
-        .gallery-item .gallery-caption { z-index: 11; }
-        /* --- End Gallery Slideshow Item --- */
-
 
         /* Lightbox Modal */
         #lightbox {
@@ -276,21 +206,14 @@
             opacity: 1;
             visibility: visible;
         }
-        @keyframes slideIn { /* Added for lightbox entry */
-            from {
-                transform: scale(0.9) translateY(20px);
-                opacity: 0;
-            }
-            to {
-                transform: scale(1) translateY(0);
-                opacity: 1;
-            }
-        }
         #lightbox-content {
             position: relative;
             max-width: 90vw;
             max-height: 90vh;
             animation: slideIn 0.5s ease-out forwards;
+            /* Added h-full w-full for swiper */
+            width: 100%;
+            height: 100%;
         }
         #lightbox-content img, #lightbox-content video {
             width: 100%;
@@ -307,78 +230,56 @@
             color: white;
             cursor: pointer;
             transition: transform 0.3s ease;
+            /* Ensure close button is on top */
+            z-index: 1050; 
         }
         #close-lightbox:hover {
             transform: scale(1.1);
         }
 
-        /* Brush stroke section divider */
-        .brush-divider {
-            width: 100%;
-            height: 80px;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 120'%3E%3Cpath fill='%23FFD400' fill-opacity='1' d='M0,32L48,37.3C96,43,192,53,288,74.7C384,96,480,128,576,128C672,128,768,96,864,80C960,64,1056,64,1152,58.7C1248,53,1344,43,1392,37.3L1440,32L1440,120L1392,120C1344,120,1248,120,1152,120C1056,120,960,120,864,120C768,120,672,120,576,120C480,120,384,120,288,120C192,120,96,120,48,120L0,120Z'%3E%3C/path%3E%3C/svg%3E");
-            background-size: cover;
-            background-repeat: no-repeat;
-            transform: rotate(180deg);
+        /* Lightbox Swiper Styles */
+        #lightbox .swiper-slide {
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .brush-divider-bottom {
-            transform: rotate(0deg);
+        #lightbox .swiper-slide img,
+        #lightbox .swiper-slide video {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        #lightbox .swiper-pagination-bullet-active {
+            background: var(--color-primary) !important;
+        }
+        #lightbox .swiper-button-next,
+        #lightbox .swiper-button-prev {
+            color: #ffffff !important;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        #lightbox .swiper-button-next:hover,
+        #lightbox .swiper-button-prev:hover {
+            opacity: 1;
         }
 
-        /* Animated Brush Underline */
-        .brush-underline {
-            position: relative;
-            display: inline-block;
+        /* Reviews Carousel */
+        .review-carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
         }
-        .brush-underline-svg {
-            position: absolute;
-            bottom: -20px;
-            left: 0;
-            width: 100%;
-            height: 30px;
-            overflow: visible;
+        .review-card {
+            flex: 0 0 100%;
         }
-        .brush-underline-svg path {
-            fill: none;
-            stroke: var(--color-primary);
-            stroke-width: 8;
-            stroke-linecap: round;
-            stroke-dasharray: 500;
-            stroke-dashoffset: 500;
-            animation: brushUnderline 1.5s ease-out 1s forwards;
+        @media (min-width: 768px) {
+            .review-card {
+                flex: 0 0 50%;
+            }
         }
-        
-        /* Contact Form Paint Drops */
-        .paint-drop {
-            position: absolute;
-            background-color: var(--color-primary);
-            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-            opacity: 0.1;
-            animation: floatSlow 10s ease-in-out infinite;
-            transform-origin: center bottom;
-        }
-        .paint-drop:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 5%; animation-duration: 12s; }
-        .paint-drop:nth-child(2) { width: 50px; height: 50px; top: 30%; right: 10%; animation-duration: 8s; animation-delay: -3s; }
-        .paint-drop:nth-child(3) { width: 100px; height: 100px; bottom: 15%; left: 20%; animation-duration: 15s; }
-
-        /* MODIFICATION: Gallery Paint Drops */
-        #gallery .paint-drop {
-            z-index: -1; /* Behind gallery items */
-            opacity: 0.05; /* More subtle */
-        }
-        #gallery .paint-drop:nth-child(1) { width: 60px; height: 60px; top: 5%; left: 10%; animation-duration: 15s; }
-        #gallery .paint-drop:nth-child(2) { width: 40px; height: 40px; top: 20%; right: 15%; animation-duration: 10s; }
-        #gallery .paint-drop:nth-child(3) { width: 90px; height: 90px; top: 50%; left: 5%; animation-duration: 12s; }
-        #gallery .paint-drop:nth-child(4) { width: 50px; height: 50px; bottom: 10%; right: 10%; animation-duration: 9s; }
-
-
-        /* Glowing Contact Icons */
-        .glow-icon {
-            transition: all 0.3s ease;
-        }
-        .glow-icon:hover {
-            transform: scale(1.1) translateY(-3px);
-            box-shadow: 0 0 25px var(--color-primary);
+        @media (min-width: 1024px) {
+            .review-card {
+                flex: 0 0 33.333%;
+            }
         }
 
         /* Respects Reduced Motion */
@@ -395,21 +296,6 @@
                 opacity: 1 !important;
                 transform: none !important;
             }
-            /* MODIFICATION: Stop GSAP loops */
-            .gallery-item {
-                animation: none !important;
-            }
-            /* NEW: Stop slideshow */
-            .slideshow-frame {
-                animation: none !important;
-            }
-            .slideshow-inner .slide {
-                animation: none !important;
-            }
-            /* NEW: Stop gallery slideshow item */
-            .gallery-item-slideshow-inner .slide {
-                animation: none !important;
-            }
         }
 
         /* Custom Scrollbar */
@@ -425,394 +311,249 @@
             border: 2px solid var(--color-bg-darker);
         }
         ::-webkit-scrollbar-thumb:hover {
-            background-color: #e6c000;
+            background-color: var(--color-secondary);
         }
 
     </style>
 </head>
-<body class="overflow-x-hidden">
+<!-- YAHAN BADLA HAI: 'gradient-bg' aur 'animate-gradient-wave' classes hataye hai --><body class="overflow-x-hidden">
 
-    <!-- Header & Navigation -->
-    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="header">
+    <!-- Header & Navigation --><header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="header">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-bold text-brand-text dark:text-brand-text font-sketch">
-                Wall Artist
+            <a href="#" class="text-3xl font-bold text-brand-text font-sketch">
+                Wall Art
             </a>
-            <!-- Mobile Menu Button -->
-            <button id="mobile-menu-btn" class="md:hidden text-brand-text dark:text-brand-text focus:outline-none">
+            <!-- Mobile Menu Button --><button id="mobile-menu-btn" class="md:hidden text-brand-text focus:outline-none">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
-            <!-- Desktop Menu -->
-            <div class="hidden md:flex space-x-8 items-center">
-                <a href="#about" class="text-brand-text dark:text-brand-text hover:text-brand-primary transition-colors">About</a>
-                <a href="#gallery" class="text-brand-text dark:text-brand-text hover:text-brand-primary transition-colors">Gallery</a>
-                <a href="#reviews" class="text-brand-text dark:text-brand-text hover:text-brand-primary transition-colors">Reviews</a>
-                <a href="#contact" class="px-5 py-2 rounded-full text-brand-text bg-brand-primary hover:bg-opacity-80 font-semibold transition-all duration-300 glow-icon">
-                    Contact Artist
+            <!-- Desktop Menu --><div class="hidden md:flex space-x-8 items-center">
+                <a href="#about" class="hover:text-brand-primary transition-colors">About</a>
+                <a href="#services" class="hover:text-brand-primary transition-colors">Services</a>
+                <a href="#gallery" class="hover:text-brand-primary transition-colors">Gallery</a>
+                <a href="#reviews" class="hover:text-brand-primary transition-colors">Reviews</a>
+                <a href="#contact" class="px-5 py-2 rounded-full text-white bg-brand-primary hover:bg-brand-secondary transition-colors glow-button">
+                    Get in Touch
                 </a>
             </div>
         </nav>
-        <!-- Mobile Menu (Hidden by default) -->
-        <div id="mobile-menu" class="hidden md:hidden bg-brand-bg-darker shadow-lg absolute top-full left-0 w-full">
+        <!-- Mobile Menu (Hidden by default) --><div id="mobile-menu" class="hidden md:hidden bg-brand-bg/90 backdrop-blur-sm shadow-lg absolute top-full left-0 w-full">
             <a href="#about" class="block px-6 py-3 text-center hover:bg-brand-primary/20">About</a>
+            <a href="#services" class="block px-6 py-3 text-center hover:bg-brand-primary/20">Services</a>
             <a href="#gallery" class="block px-6 py-3 text-center hover:bg-brand-primary/20">Gallery</a>
             <a href="#reviews" class="block px-6 py-3 text-center hover:bg-brand-primary/20">Reviews</a>
-            <a href="#contact" class="block px-6 py-4 text-center text-brand-text bg-brand-primary font-semibold">
-                Contact Artist
+            <a href="#contact" class="block px-6 py-4 text-center text-white bg-brand-primary hover:bg-brand-secondary transition-colors">
+                Get in Touch
             </a>
         </div>
     </header>
 
-    <!-- Hero Section -->
-    <section id="hero" class="relative h-screen w-full flex items-center justify-center text-center overflow-hidden">
-        
-        <!-- Animated Doodle Background -->
-        <div id="doodle-background" class="absolute top-0 left-0 w-full h-full opacity-60 dark:opacity-40">
-            <!-- Main Typography -->
-            <div class="doodle" style="top: 30%; left: 50%; transform: translateX(-50%) translateY(-50%) rotate(-5deg); width: 60vw; max-width: 800px;">
-                <svg viewBox="0 0 500 100">
-                    <text x="50%" y="50%" dy=".35em" text-anchor="middle" class="text-8xl md:text-9xl font-black" fill="var(--color-accent)" font-family="Kalam, cursive">
-                        IDEA
-                    </text>
-                </svg>
-            </div>
-            
-            <!-- Doodle Icons -->
-            <!-- Lightbulb -->
-            <svg class="doodle animate-float-fast" style="top: 20%; left: 15%; width: 100px;" viewBox="0 0 64 64">
-                <path class="draw-animation" d="M32 4C20.9 4 12 12.9 12 24c0 9 6.2 16.5 14.4 18.8l.6 3.2h10l.6-3.2C45.8 40.5 52 33 52 24 52 12.9 43.1 4 32 4z" stroke-width="2.5" />
-                <path class="draw-animation" d="M22 46h20v4H22zM24 50h16v4H24zM28 54h8v4h-8z" stroke-width="2.5" />
-            </svg>
-            <!-- Gear -->
-            <svg class="doodle animate-float-medium" style="top: 60%; left: 10%; width: 80px;" viewBox="0 0 32 32">
-                <path class="draw-animation" d="M29.18 19.07L27 18.39V13.6l2.18-0.68c0.53-0.17 0.85-0.7 0.68-1.23l-2-3.46c-0.17-0.53-0.7-0.85-1.23-0.68L24.4 8.77l-1.73-3L21.3 4H10.7L9.33 5.77 7.1 4.6c-0.53-0.17-1.07 0.15-1.23 0.68l-2 3.46c-0.17 0.53 0.15 1.07 0.68 1.23L6.73 10.66l-1.13 4.54-4.54 1.13c-0.53 0.17-0.85 0.7-0.68 1.23l2 3.46c0.17 0.53 0.7 0.85 1.23 0.68L5.77 23.6l1.73 3L8.87 28h14.27l1.37-1.77 2.23 1.16c0.53 0.17 1.07-0.15 1.23-0.68l2-3.46c0.17-0.53-0.15-1.07-0.68-1.23L27 21.82v-2.75zM16 22c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6S19.31 22 16 22z" stroke-width="1.5" />
-            </svg>
-            <!-- Arrow -->
-            <svg class="doodle animate-float-slow" style="top: 75%; left: 70%; width: 120px; transform: rotate(20deg);" viewBox="0 0 32 32">
-                <path class="draw-animation" d="M4 16h22M18 8l8 8-8 8" stroke-width="2.5" />
-            </svg>
-            <!-- Speech Bubble -->
-            <svg class="doodle animate-float-fast" style="top: 25%; right: 10%; width: 130px;" viewBox="0 0 64 64">
-                <path class="draw-animation" d="M1 1h54v40H30l-10 10v-10H1V1z" stroke-width="2.5" />
-            </svg>
-             <!-- Chart -->
-            <svg class="doodle animate-float-medium" style="bottom: 10%; left: 45%; width: 100px;" viewBox="0 0 32 32">
-                <path class="draw-animation" d="M4 4h24v24H4zM8 24v-8M14 24v-14M20 24v-4M26 24v-10" stroke-width="1.5" />
-            </svg>
-        </div>
+    <!-- Hero Section --><section id="hero" class="relative h-screen w-full flex items-center justify-center text-center text-white overflow-hidden">
+        <!-- Background Image --><img 
+            src="image_ec9c5e.jpg" 
+            alt="Wall Art Background" 
+            class="absolute top-0 left-0 w-full h-full object-cover z-0 animate-ken-burns"
+            onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/facc15/1f2937?text=Wall+Art+Idea';"
+        >
 
-        <!-- Content -->
-        <div class="relative z-30 p-6 max-w-3xl">
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight text-brand-accent font-sketch" id="hero-heading">
-                ART IN MOTION
+        <!-- Overlay --><div class="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
+        
+        <!-- Animated Gradient Overlay - Removed, as per user's request for solid yellow --><!-- <div class="absolute top-0 left-0 w-full h-full z-20 opacity-30 gradient-bg animate-gradient-wave"></div> --><!-- Content --><div class="relative z-30 p-6 max-w-3xl gsap-animated" data-anim="hero-content">
+            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight">
+                Vibrant. Colorful. Alive.
             </h1>
-            <p class="text-lg md:text-2xl mb-8 font-light text-brand-secondary/80 dark:text-brand-accent/80">
-                We craft stunning, hand-painted murals that tell your story.
+            <p class="text-lg md:text-2xl mb-8 font-light">
+                We craft stunning digital experiences that tell your story with motion and life.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#gallery" class="px-8 py-4 rounded-full text-brand-secondary text-lg font-semibold bg-brand-accent hover:bg-opacity-90 transition-all duration-300 shadow-lg glow-icon">
-                    View Portfolio
+                <a href="#contact" class="px-8 py-4 rounded-full text-white text-lg font-semibold bg-brand-primary hover:bg-brand-secondary transition-colors glow-button">
+                    Get in Touch
                 </a>
-                <a href="#contact" class="px-8 py-4 rounded-full text-brand-accent text-lg font-semibold bg-brand-accent/20 backdrop-blur-sm border border-brand-accent/30 hover:bg-brand-accent/30 transition-all duration-300">
-                    Contact Artist
+                <a href="#gallery" class="px-8 py-4 rounded-full text-white text-lg font-semibold bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300">
+                    Explore Work
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Brush Stroke Divider -->
-    <div class="brush-divider w-full h-20 -mt-1 relative z-10" style="background-image: url('data:image/svg+xml,%3Csvg xmlns=\'http://www.w3.org/2000/svg\' viewBox=\'0 0 1440 120\'%3E%3Cpath fill=\'%23FFD400\' fill-opacity=\'1\' d=\'M0,32L48,37.3C96,43,192,53,288,74.7C384,96,480,128,576,128C672,128,768,96,864,80C960,64,1056,64,1152,58.7C1248,53,1344,43,1392,37.3L1440,32L1440,0L1392,0C1344,0,1248,0,1152,0C1056,0,960,0,864,0C768,0,672,0,576,0C480,0,384,0,288,0C192,0,96,0,48,0L0,0Z\'%3E%3C/path%3E%3C/svg%3E'); transform: rotate(0deg);"></div>
+    <!-- Main Content Wrapper --><main class="container mx-auto px-6 py-24">
 
-
-    <!-- Main Content Wrapper -->
-    <main class="container mx-auto px-6 py-24">
-
-        <!-- About Section -->
-        <section id="about" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-24 overflow-hidden">
+        <!-- About Section --><section id="about" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-24 overflow-hidden p-8 rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl">
             <div class="gsap-animated" data-anim="fade-right">
-                <!-- ADMIN NOTE: Replace 'src' with an image or video of the artist. -->
-                <img src="https://placehold.co/600x600/000000/white?text=Artist+at+Work" alt="Wall artist painting a mural" class="rounded-xl shadow-2xl w-full h-auto object-cover">
+                <!-- ADMIN NOTE: Replace 'src' with an image or video from your drive. --><img src="https://placehold.co/600x600/3b82f6/white?text=About+Us" alt="Our Team" class="rounded-xl shadow-2xl w-full h-auto object-cover">
             </div>
-            <div class="gsap-animated relative" data-anim="fade-left">
-                <!-- Floating doodle icon -->
-                <svg class="doodle animate-float-slow absolute -top-16 -right-8 w-24 opacity-20 dark:opacity-10" viewBox="0 0 64 64">
-                    <path d="M20 10 C10 20 10 40 20 50 S 40 60 50 50 S 40 10 30 10 S 20 0 20 10 Z" stroke-width="2.5" class="draw-animation" />
-                </svg>
-                
-                <span class="text-brand-primary font-semibold font-sketch text-lg">Our Mission</span>
-                <h2 class="text-4xl md:text-5xl font-bold my-4 text-brand-text dark:text-brand-text font-sketch">We Bring Walls to Life</h2>
-                <p class="text-lg text-brand-text/80 dark:text-brand-text/80 leading-relaxed">
-                    We believe every blank wall is a canvas waiting for a story. Our passion is transforming spaces with unique, hand-painted art that reflects your brand, personality, and vision.
+            <div class="gsap-animated" data-anim="fade-left">
+                <span class="text-brand-primary font-semibold">Our Mission</span>
+                <h2 class="text-4xl md:text-5xl font-bold my-4 font-sketch">We Bring Brands to Life</h2>
+                <p class="text-lg text-brand-text/80 leading-relaxed">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo nec libero facilisis, ac dapibus dolor feugiat. Vivamus in sem quis sapien consequat efficitur.
                     <br><br>
-                    From intricate designs to bold, large-scale murals, we collaborate with you from the first sketch to the final brushstroke.
+                    Our passion is combining art and technology to create unforgettable digital stories that captivate and convert.
                 </p>
             </div>
         </section>
 
-        <!-- === NEW: Animated Multi-Image Section === -->
-        <!-- ENTIRE SECTION REMOVED -->
-        <!-- === END: Animated Multi-Image Section === -->
-
-
-        <!-- Gallery Section -->
-        <section id="gallery" class="my-32 overflow-hidden relative">
-            <!-- MODIFICATION: Added paint drops -->
-            <div class="paint-drop"></div>
-            <div class="paint-drop"></div>
-            <div class="paint-drop"></div>
-            <div class="paint-drop"></div>
-
-            <span class="text-brand-primary font-semibold gsap-animated font-sketch text-lg" data-anim="fade-up">Our Work</span>
-            <h2 class="text-4xl md:text-5xl font-bold my-4 text-brand-text dark:text-brand-text gsap-animated font-sketch" data-anim="fade-up" data-delay="0.1">Mural Gallery</h2>
-            <p class="text-lg text-brand-text/80 dark:text-brand-text/80 mb-12 max-w-2xl gsap-animated" data-anim="fade-up" data-delay="0.2">
-                A showcase of our completed murals. Click any image to see it in detail.
-            </p>
-
-            <div class="gallery-container">
-                
-                <!-- Gallery Item 1 (Image) - MODIFIED TO BE SLIDESHOW -->
-                <div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="fade-up" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipNNkElcJ99CONtGZ6NLFV97TBW-3dW3xqrPgDaj=s1360-w1360-h1020-rw"
-                     data-slideshow="true">
-                    
-                    <div class="gallery-item-loader"></div>
-                    <div class="gallery-item-slideshow-inner">
-                        <!-- Slides will be injected here by JS -->
+        <!-- Services Section --><section id="services" class="my-32 text-center overflow-hidden p-8 rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl">
+            <span class="text-brand-primary font-semibold gsap-animated" data-anim="fade-up">What We Do</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch" data-anim="fade-up" data-delay="0.1">Our Services</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+                <!-- Service Card 1 --><div class="service-card bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.2">
+                    <div class="text-5xl mb-4 text-brand-primary">
+                        <!-- Replaced "Icon1" with SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
                     </div>
-
-                    <svg class="brush-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 5 H95 V95 H5 Z" vector-effect="non-scaling-stroke"/></svg>
-                    <!-- <img src="https://lh3.googleusercontent.com/p/AF1QipNNkElcJ99CONtGZ6NLFV97TBW-3dW3xqrPgDaj=s1360-w1360-h1020-rw" alt="Mural 1" loading="lazy"> --> <!-- REMOVED IMG -->
-                    
-                    <div class="gallery-caption absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent text-white opacity-0">
-                        <h3 class="font-bold text-lg">Featured Work</h3>
-                        <p class="text-sm opacity-90">Auto-rotating showcase</p>
-                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 font-sketch">Web Design</h3>
+                    <p class="text-brand-text/80">Stunning, responsive websites built for performance and visual impact.</p>
                 </div>
-
-                <!-- Gallery Item 2 (Image) -->
-                <div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="slide-left" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw">
-                    <svg class="brush-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 5 H95 V95 H5 Z" vector-effect="non-scaling-stroke"/></svg>
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw" alt="Mural 2" loading="lazy">
-                    <!-- MODIFICATION: Added caption -->
-                    <div class="gallery-caption absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent text-white opacity-0">
-                        <h3 class="font-bold text-lg">Geometric Flow</h3>
-                        <p class="text-sm opacity-90">Tech Office</p>
+                <!-- Service Card 2 --><div class="service-card bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.4">
+                    <div class="text-5xl mb-4 text-brand-secondary">
+                        <!-- Replaced "Icon2" with SVG -->
+                         <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                        </svg>
                     </div>
+                    <h3 class="text-2xl font-semibold mb-3 font-sketch">Motion Graphics</h3>
+                    <p class="text-brand-text/80">Engaging video animations that explain and entertain.</p>
                 </div>
-
-                <!-- Gallery Item 3 (Image) -->
-                <div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="zoom-in" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipOHh6Y2E9pFSbbIyf3JOeKPOnOfaqhuHHbebjWp=s1360-w1360-h1020-rw">
-                    <svg class="brush-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 5 H95 V95 H5 Z" vector-effect="non-scaling-stroke"/></svg>
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipOHh6Y2E9pFSbbIyf3JOeKPOnOfaqhuHHbebjWp=s1360-w1360-h1020-rw" alt="Mural 3" loading="lazy">
-                    <!-- MODIFICATION: Added caption -->
-                    <div class="gallery-caption absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent text-white opacity-0">
-                        <h3 class="font-bold text-lg">Abstract Dreams</h3>
-                        <p class="text-sm opacity-90">Residential</p>
+                <!-- Service Card 3 --><div class="service-card bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.6">
+                    <div class="text-5xl mb-4 text-brand-accent">
+                        <!-- Replaced "Icon3" with SVG -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+                        </svg>
                     </div>
-                </div>
-
-                <!-- Gallery Item 4 (Image) -->
-                <div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="slide-right" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw">
-                    <svg class="brush-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 5 H95 V95 H5 Z" vector-effect="non-scaling-stroke"/></svg>
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw" alt="Mural 4" loading="lazy">
-                    <!-- MODIFICATION: Added caption -->
-                    <div class="gallery-caption absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent text-white opacity-0">
-                        <h3 class="font-bold text-lg">City Lines</h3>
-                        <p class="text-sm opacity-90">Co-working Space</p>
-                    </div>
-                </div>
-                
-                <!-- Gallery Item 5 (Image) -->
-                <div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="blur-in" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipMEQKlJmWsEzF-6u7h0WiwHg17GcJnstAN0FQtS=s1360-w1360-h1020-rw">
-                    <svg class="brush-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 5 H95 V95 H5 Z" vector-effect="non-scaling-stroke"/></svg>
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipMEQKlJmWsEzF-6u7h0WiwHg17GcJnstAN0FQtS=s1360-w1360-h1020-rw" alt="Mural 5" loading="lazy">
-                    <!-- MODIFICATION: Added caption -->
-                    <div class="gallery-caption absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent text-white opacity-0">
-                        <h3 class="font-bold text-lg">Character Joy</h3>
-                        <p class="text-sm opacity-90">Children's Room</p>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 6 (Image) -->
-                <div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="fade-up" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipNzSGaMgxKyG8AuCMurYRs_PvD8TJp5sLf07Cwq=s1360-w1360-h1020-rw">
-                    <svg class="brush-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 5 H95 V95 H5 Z" vector-effect="non-scaling-stroke"/></svg>
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipNzSGaMgxKyG8AuCMurYRs_PvD8TJp5sLf07Cwq=s1360-w1360-h1020-rw" alt="Mural 6" loading="lazy">
-                    <!-- MODIFICATION: Added caption -->
-                    <div class="gallery-caption absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent text-white opacity-0">
-                        <h3 class="font-bold text-lg">Brand Identity</h3>
-                        <p class="text-sm opacity-90">Retail Storefront</p>
-                    </div>
-                </div>
-
-                <!-- NEW: Gallery Item 7 (Image) -->
-                <div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="fade-up" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipO3IWlSfuubMF_eUO902pDrbxhK-F5Cr3GKgf9c=s1360-w1360-h1020-rw">
-                    <svg class="brush-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 5 H95 V95 H5 Z" vector-effect="non-scaling-stroke"/></svg>
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipO3IWlSfuubMF_eUO902pDrbxhK-F5Cr3GKgf9c=s1360-w1360-h1020-rw" alt="Mural 7" loading="lazy">
-                    <div class="gallery-caption absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent text-white opacity-0">
-                        <h3 class="font-bold text-lg">Vibrant Abstract</h3>
-                        <p class="text-sm opacity-90">Studio Work</p>
-                    </div>
-                </div>
-
-                <!-- NEW: Gallery Item 8 (Image) -->
-                <div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="slide-left" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipMwYtSCB5KvhiSvC2Q96X-YYxAXA_pvTv9OUqLF=s1360-w1360-h1020-rw">
-                    <svg class="brush-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 5 H95 V95 H5 Z" vector-effect="non-scaling-stroke"/></svg>
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipMwYtSCB5KvhiSvC2Q96X-YYxAXA_pvTv9OUqLF=s1360-w1360-h1020-rw" alt="Mural 8" loading="lazy">
-                    <div class="gallery-caption absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent text-white opacity-0">
-                        <h3 class="font-bold text-lg">Colorful Strokes</h3>
-                        <p class="text-sm opacity-90">Office Space</p>
-                    </div>
-                </div>
-
-                <!-- NEW: Gallery Item 9 (Image) -->
-                <div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="zoom-in" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipMDEXD1EraOLMgyR-dojET-qyERTyusP0d3cyqP=w141-h101-n-k-no-nu">
-                    <svg class="brush-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 5 H95 V95 H5 Z" vector-effect="non-scaling-stroke"/></svg>
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipMDEXD1EraOLMgyR-dojET-qyERTyusP0d3cyqP=w141-h101-n-k-no-nu" alt="Mural 9" loading="lazy">
-                    <div class="gallery-caption absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent text-white opacity-0">
-                        <h3 class="font-bold text-lg">Detail Shot</h3>
-                        <p class="text-sm opacity-90">Close-up</p>
-                    </div>
-                </div>
-
-                <!-- NEW: Gallery Item 10 (Image) -->
-                <div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="slide-right" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipPzieVjty4v5H1126fSd32YW8TQkucXa8_Ufh_2=w141-h176-n-k-no-nu">
-                    <svg class="brush-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 5 H95 V95 H5 Z" vector-effect="non-scaling-stroke"/></svg>
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipPzieVjty4v5H1126fSd32YW8TQkucXa8_Ufh_2=w141-h176-n-k-no-nu" alt="Mural 10" loading="lazy">
-                    <div class="gallery-caption absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent text-white opacity-0">
-                        <h3 class="font-bold text-lg">Character Design</h3>
-                        <p class="text-sm opacity-90">Sketch</p>
-                    </div>
-                </div>
-
-                <!-- NEW: Gallery Item 11 (Image) -->
-                <div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="blur-in" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipPV5Rd0xH-crBcEXXCZJL_0YQxjHkfbQi6A9UcJ=s1360-w1360-h1020-rw">
-                    <svg class="brush-border-svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M5 5 H95 V95 H5 Z" vector-effect="non-scaling-stroke"/></svg>
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipPV5Rd0xH-crBcEXXCZJL_0YQxjHkfbQi6A9UcJ=s1360-w1360-h1020-rw" alt="Mural 11" loading="lazy">
-                    <div class="gallery-caption absolute bottom-0 left-0 w-full p-4 bg-gradient-to-t from-black/60 to-transparent text-white opacity-0">
-                        <h3 class="font-bold text-lg">Floral Patterns</h3>
-                        <p class="text-sm opacity-90">Cafe Interior</p>
-                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 font-sketch">Brand Identity</h3>
+                    <p class="text-brand-text/80">Crafting unique logos and styles that resonate with your audience.</p>
                 </div>
             </div>
         </section>
-        
-        <!-- Reviews Section -->
-        <section id="reviews" class="my-32 overflow-hidden">
-            <span class="text-brand-primary font-semibold gsap-animated font-sketch text-lg" data-anim="fade-up">Testimonials</span>
-            <h2 class="text-4xl md:text-5xl font-bold my-4 text-brand-text dark:text-brand-text gsap-animated font-sketch" data-anim="fade-up" data-delay="0.1">What Clients Say</h2>
-            <p class="text-lg text-brand-text/80 dark:text-brand-text/80 mb-12 max-w-2xl gsap-animated" data-anim="fade-up" data-delay="0.2">
-                We're proud of the spaces we've transformed.
+
+        <!-- Gallery Section --><section id="gallery" class="my-32 overflow-hidden p-8 rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl">
+            <span class="text-brand-primary font-semibold gsap-animated" data-anim="fade-up">Our Work</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch" data-anim="fade-up" data-delay="0.1">Animated Gallery</h2>
+            <p class="text-lg text-brand-text/80 mb-12 max-w-2xl gsap-animated" data-anim="fade-up" data-delay="0.2">
+                A showcase of our projects. Click any item to see it in detail.
             </p>
 
             <!-- 
                 ADMIN NOTE: 
-                This is a STATIC review section. To make this DYNAMIC with the Google Places API,
-                you would need:
-                1. A Google Cloud Platform project with the Places API enabled.
-                2. An API Key (with restrictions).
-                3. JavaScript to make a 'fetch' request to the Google Places API, get the 'reviews' array,
-                   and dynamically create the HTML for each review card below.
-                This static version provides the target design.
-            -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Review Card 1 -->
-                <div class="bg-brand-bg-darker dark:bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="fade-up" data-delay="0.3">
-                    <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/50x50/000000/white?text=A" alt="Avatar" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold text-brand-text dark:text-brand-text">Alex Johnson</h4>
-                            <div class="flex text-brand-primary">
-                                <!-- Animated Star Icons (using SVG for line animation) -->
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-brand-text/80 dark:text-brand-text/80">"Absolutely transformed our office space! The attention to detail was incredible. Our team loves the new vibe."</p>
+                To add new items to the gallery, copy one of the 'div.gallery-item' blocks.
+                - For an IMAGE: Update the 'data-src' on the div and the 'src' on the img.
+                - For a VIDEO: 
+                    1. Add 'data-video-src="YOUR_VIDEO_URL.mp4"' to the 'div.gallery-item'.
+                    2. Update the 'src' on the 'img' to be a thumbnail/poster for the video.
+                - Animation: Change 'data-anim-gallery' to one of: 
+                  "fade-up", "slide-left", "slide-right", "zoom-in", "blur-in"
+            --><div class="gallery-container">
+                
+                <!-- Gallery Item 1 (Image) --><div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="fade-up" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipNNkElcJ99CONtGZ6NLFV97TBW-3dW3xqrPgDaj=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNNkElcJ99CONtGZ6NLFV97TBW-3dW3xqrPgDaj=s1360-w1360-h1020-rw" alt="Gallery Image 1" loading="lazy">
                 </div>
 
-                <!-- Review Card 2 -->
-                <div class="bg-brand-bg-darker dark:bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="fade-up" data-delay="0.4">
-                    <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/50x50/000000/white?text=S" alt="Avatar" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold text-brand-text dark:text-brand-text">Sara Chen</h4>
-                            <div class="flex text-brand-primary">
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-brand-text/80 dark:text-brand-text/80">"The creative process was so collaborative. They took my vague idea and turned it into a masterpiece for our cafe."</p>
+                <!-- Gallery Item 2 (Image) --><div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="slide-left" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw" alt="Gallery Image 2" loading="lazy">
                 </div>
 
-                <!-- Review Card 3 -->
-                <div class="bg-brand-bg-darker dark:bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="fade-up" data-delay="0.5">
-                    <div class="flex items-center mb-4">
-                        <img src="https://placehold.co/50x50/000000/white?text=M" alt="Avatar" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <h4 class="font-semibold text-brand-text dark:text-brand-text">Mike Davis</h4>
-                            <div class="flex text-brand-primary">
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                                <svg class="w-5 h-5" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" fill="currentColor"/></svg>
-                            </div>
-                        </div>
-                    </div>
-                    <p class="text-brand-text/80 dark:text-brand-text/80">"Professional, tidy, and incredibly talented. The mural in our daughter's room is pure magic. Highly recommend."</p>
+                <!-- Gallery Item 3 (Image) --><div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="zoom-in" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipOHh6Y2E9pFSbbIyf3JOeKPOnOfaqhuHHbebjWp=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipOHh6Y2E9pFSbbIyf3JOeKPOnOfaqhuHHbebjWp=s1360-w1360-h1020-rw" alt="Gallery Image 3" loading="lazy">
                 </div>
-            </div>
 
-            <div class="text-center mt-12 gsap-animated" data-anim="fade-up">
-                <a href="https://www.google.com/search?q=wall+art+new+delhi" target="_blank" rel="noopener noreferrer" 
-                   class="inline-flex items-center gap-2 px-6 py-3 rounded-full text-brand-text dark:text-brand-text font-semibold bg-white dark:bg-gray-200 border border-gray-300 dark:border-gray-500 shadow-md hover:shadow-lg transition-all">
-                    <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 488 512"><path fill="#4285F4" d="M488 261.8C488 403.3 381.5 512 244 512 111.3 512 0 400.7 0 261.8 0 122.9 111.3 0 244 0c110.5 0 204.8 69.1 238.4 162.3l-93.9 44.9C365.9 157.6 309.4 121.1 244 121.1c-73.1 0-132.3 60.2-132.3 134.4s59.2 134.4 132.3 134.4c76.1 0 121.7-50.6 126.8-76.9h-126.8v-97.2h239.5c1.2 12.3 1.8 24.9 1.8 37.8z"/></svg>
-                    Read all on Google
-                </a>
+                <!-- Gallery Item 4 (Image) --><div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="slide-right" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw" alt="Gallery Image 4" loading="lazy">
+                </div>
+                
+                <!-- Gallery Item 5 (Image) --><div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="blur-in" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipMEQKlJmWsEzF-6u7h0WiwHg17GcJnstAN0FQtS=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipMEQKlJmWsEzF-6u7h0WiwHg17GcJnstAN0FQtS=s1360-w1360-h1020-rw" alt="Gallery Image 5" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 6 (Image) --><div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="fade-up" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipNzSGaMgxKyG8AuCMurYRs_PvD8TJp5sLf07Cwq=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNzSGaMgxKyG8AuCMurYRs_PvD8TJp5sLf07Cwq=s1360-w1360-h1020-rw" alt="Gallery Image 6" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 7 (Image) --><div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="slide-left" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipOTHyUzlCYXD4Qeei8MSdK6atEnG_5vDaGBmTSA=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipOTHyUzlCYXD4Qeei8MSdK6atEnG_5vDaGBmTSA=s1360-w1360-h1020-rw" alt="Gallery Image 7" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 8 (Image) --><div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="zoom-in" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipNee1GjeqCyOs4smleie5H9eXRdslzJi0hVwEAv=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipNee1GjeqCyOs4smleie5H9eXRdslzJi0hVwEAv=s1360-w1360-h1020-rw" alt="Gallery Image 8" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 9 (Image) --><div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="blur-in" 
+                     data-src="https://lh3.googleusercontent.com/p/AF1QipOAKZ5vWcWoD3BY-lQkw9k36d2Y5CMGCp1zQ0Kf=s1360-w1360-h1020-rw">
+                    <img src="https://lh3.googleusercontent.com/p/AF1QipOAKZ5vWcWoD3BY-lQkw9k36d2Y5CMGCp1zQ0Kf=s1360-w1360-h1020-rw" alt="Gallery Image 9" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 10 (Small Video) --><div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="fade-up" 
+                     data-src="https://placehold.co/600x450/f97316/white?text=Project+10+(Video)"
+                     data-video-src="https://assets.mixkit.co/videos/preview/mixkit-abstract-glowing-lines-loop-4212-large.mp4">
+                    <img src="https://placehold.co/600x450/f97316/white?text=Project+10+(Video)" alt="Gallery Video 3" loading="lazy">
+                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 p-4 bg-black/50 rounded-full">
+                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                    </div>
+                </div>
+
+                <!-- Gallery Item 11 (Medium Image) --><div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="slide-right" 
+                     data-src="https://placehold.co/600x600/84cc16/white?text=Project+11">
+                    <img src="https://placehold.co/600x600/84cc16/white?text=Project+11" alt="Gallery Image 11" loading="lazy">
+                </div>
+
+                <!-- Gallery Item 12 (Tall Image) --><div class="gallery-item relative cursor-pointer" 
+                     data-anim-gallery="fade-up" 
+                     data-src="https://placehold.co/600x850/3b82f6/white?text=Project+12">
+                    <img src="https://placehold.co/600x850/3b82f6/white?text=Project+12" alt="Gallery Image 12" loading="lazy">
+                </div>
+
             </div>
         </section>
 
-        <!-- Map Section -->
-        <section id="map" class="my-32 overflow-hidden">
-            <span class="text-brand-primary font-semibold gsap-animated font-sketch text-lg" data-anim="fade-up">Find Us</span>
-            <h2 class="text-4xl md:text-5xl font-bold my-4 text-brand-text dark:text-brand-text gsap-animated font-sketch" data-anim="fade-up" data-delay="0.1">Our Studio</h2>
+        <!-- Map Section --><section id="map" class="my-32 overflow-hidden p-8 rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl">
+            <span class="text-brand-primary font-semibold gsap-animated" data-anim="fade-up">Find Us</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch" data-anim="fade-up" data-delay="0.1">Our Location</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
                 <div class="md:col-span-2 rounded-xl overflow-hidden shadow-2xl gsap-animated" data-anim="fade-right">
                     <!-- 
                         ADMIN NOTE: 
                         This is a Google Maps embed. Replace the 'src' attribute with your own.
-                    -->
-                    <iframe 
+                        1. Go to Google Maps.
+                        2. Find your location.
+                        3. Click "Share" -> "Embed a map".
+                        4. Copy the 'src' URL and paste it below.
+                        
+                        For a dynamic JS map, you'll need the Google Maps JavaScript API key.
+                        
+                        FALLBACK (OpenStreetMap - No API key needed):
+                        <iframe 
+                            width="100%" 
+                            height="100%" 
+                            frameborder="0" 
+                            scrolling="no" 
+                            marginheight="0" 
+                            marginwidth="0" 
+                            src="https://www.openstreetmap.org/export/embed.html?bbox=-0.13033,51.50325,-0.12233,51.50925&layer=mapnik&marker=51.50625,-0.12633"
+                            class="min-h-[450px]"
+                        ></iframe>
+                    --><iframe 
                         src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.1481134253303!2d77.237274!3d28.564251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce25b5b03f0b3%3A0xe545c61833930e4!2sWall%20Art!5e0!3m2!1sen!2sin!4v1730465138338!5m2!1sen!2sin" 
                         width="100%" 
                         height="450" 
@@ -821,25 +562,24 @@
                         loading="lazy" 
                         referrerpolicy="no-referrer-when-downgrade"
                         title="Google Map of our location"
-                        class="grayscale-[50%] contrast-125"
                     ></iframe>
                 </div>
-                <div class="bg-brand-bg-darker dark:bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="fade-left">
-                    <h3 class="text-2xl font-semibold mb-4 text-brand-text dark:text-brand-text">Visit the Studio</h3>
-                    <address class="not-italic text-brand-text/80 dark:text-brand-text/80 mb-6">
+                <div class="bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="fade-left">
+                    <h3 class="text-2xl font-semibold mb-4">Visit Us</h3>
+                    <address class="not-italic text-brand-text/80 mb-6">
                         A-42, Greater Kailash-1, Block E<br>
                         Zamrudpur, Greater Kailash<br>
                         New Delhi, Delhi 110048
                     </address>
-                    <h4 class="font-semibold text-lg text-brand-text dark:text-brand-text">Hours</h4>
-                    <p class="text-brand-text/80 dark:text-brand-text/80 mb-6">
-                        By Appointment Only
+                    <h4 class="font-semibold text-lg">Hours</h4>
+                    <p class="text-brand-text/80 mb-6">
+                        Open 24 hours
                     </p>
                     <a 
                         href="https://maps.google.com/?q=A-42,+Greater+Kailash-1,+Block+E,+Zamrudpur,+Greater+Kailash,+New+Delhi,+Delhi+110048"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-block w-full text-center px-6 py-3 rounded-full text-brand-text font-semibold bg-brand-primary hover:bg-opacity-80 transition-all glow-icon"
+                        class="inline-block w-full text-center px-6 py-3 rounded-full text-white font-semibold bg-brand-primary hover:bg-brand-secondary transition-colors glow-button"
                     >
                         Get Directions
                     </a>
@@ -847,117 +587,111 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
-        <section id="contact" class="my-32 overflow-hidden relative">
-            <!-- Background paint drops -->
-            <div class="paint-drop"></div>
-            <div class="paint-drop"></div>
-            <div class="paint-drop"></div>
+        <!-- Contact Section --><section id="contact" class="my-32 overflow-hidden p-8 rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl">
+            <span class="text-brand-primary font-semibold gsap-animated" data-anim="fade-up">Contact</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch" data-anim="fade-up" data-delay="0.1">Let's Create Together</h2>
+            <p class="text-lg text-brand-text/80 mb-12 max-w-2xl gsap-animated" data-anim="fade-up" data-delay="0.2">
+                Have an idea? We'd love to hear about it. Fill out the form or reach out directly.
+            </p>
 
-            <div class="relative z-10 p-8 md:p-12 rounded-xl bg-brand-bg/80 dark:bg-brand-bg/80 backdrop-blur-sm">
-                <div class="text-center mb-12">
-                    <h2 class="text-4xl md:text-5xl font-bold my-4 text-brand-text dark:text-brand-text gsap-animated brush-underline font-sketch" data-anim="fade-up" data-delay="0.1">
-                        Let's Paint Together!
-                        <svg class="brush-underline-svg" viewBox="0 0 300 30"><path d="M5 20 Q 150 5 295 20" /></svg>
-                    </h2>
-                    <p class="text-lg text-brand-text/80 dark:text-brand-text/80 mt-8 max-w-2xl mx-auto gsap-animated" data-anim="fade-up" data-delay="0.2">
-                        Have an idea? We'd love to hear about it. Fill out the form or reach out directly.
-                    </p>
+            <form action="#" method="POST" class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div class="gsap-animated" data-anim="fade-up" data-delay="0.3">
+                    <label for="name" class="block text-sm font-medium text-brand-text/80 mb-2">Name</label>
+                    <input type="text" id="name" name="name" required
+                           class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all">
                 </div>
-
-                <form action="#" method="POST" class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div class="gsap-animated" data-anim="fade-up" data-delay="0.3">
-                        <label for="name" class="block text-sm font-medium text-brand-text/80 dark:text-brand-text/80 mb-2">Name</label>
-                        <input type="text" id="name" name="name" required
-                            class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker dark:bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all text-brand-text dark:text-brand-text">
-                    </div>
-                    <div class="gsap-animated" data-anim="fade-up" data-delay="0.4">
-                        <label for="email" class="block text-sm font-medium text-brand-text/80 dark:text-brand-text/80 mb-2">Email</label>
-                        <input type="email" id="email" name="email" required
-                            class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker dark:bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all text-brand-text dark:text-brand-text">
-                    </div>
-                    <div class="md:col-span-2 gsap-animated" data-anim="fade-up" data-delay="0.5">
-                        <label for="message" class="block text-sm font-medium text-brand-text/80 dark:text-brand-text/80 mb-2">Tell us about your wall</label>
-                        <textarea id="message" name="message" rows="5" required
-                                class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker dark:bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all text-brand-text dark:text-brand-text"></textarea>
-                    </div>
-                    <div class="md:col-span-2 text-center gsap-animated" data-anim="fade-up" data-delay="0.6">
-                        <button type="submit"
-                                class="px-10 py-4 rounded-full text-brand-text text-lg font-semibold bg-brand-primary hover:bg-opacity-80 transition-all glow-icon">
-                            Send Message
-                        </button>
-                    </div>
-                </form>
-                
-                <div class="text-center mt-12 space-y-4">
-                    <p class="text-brand-text/80 dark:text-brand-text/80 gsap-animated" data-anim="fade-up" data-delay="0.7">Or reach us directly:</p>
-                    <div class="flex flex-col sm:flex-row justify-center gap-6">
-                        <!-- WhatsApp -->
-                        <a href="https://wa.me/919999226846" target="_blank" rel="noopener noreferrer" 
-                           class="px-6 py-3 rounded-full font-semibold bg-green-500 text-white hover:bg-green-600 transition-all shadow-lg gsap-animated glow-icon" data-anim="pop-in" data-delay="0.8">
-                           WhatsApp Us
-                        </a>
-                        <!-- Call -->
-                        <a href="tel:09999226846" class="px-6 py-3 rounded-full font-semibold bg-blue-500 text-white hover:bg-blue-600 transition-all shadow-lg gsap-animated glow-icon" data-anim="pop-in" data-delay="0.9">
-                            Call 099992 26846
-                        </a>
-                    </div>
+                <div class="gsap-animated" data-anim="fade-up" data-delay="0.4">
+                    <label for="email" class="block text-sm font-medium text-brand-text/80 mb-2">Email</label>
+                    <input type="email" id="email" name="email" required
+                           class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all">
                 </div>
+                <div class="md:col-span-2 gsap-animated" data-anim="fade-up" data-delay="0.5">
+                    <label for="phone" class="block text-sm font-medium text-brand-text/80 mb-2">Phone (Optional)</label>
+                    <input type="tel" id="phone" name="phone"
+                           class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all">
+                </div>
+                <div class="md:col-span-2 gsap-animated" data-anim="fade-up" data-delay="0.6">
+                    <label for="message" class="block text-sm font-medium text-brand-text/80 mb-2">Message</label>
+                    <textarea id="message" name="message" rows="5" required
+                              class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all"></textarea>
+                </div>
+                <div class="md:col-span-2 text-center gsap-animated" data-anim="fade-up" data-delay="0.7">
+                    <button type="submit"
+                            class="px-10 py-4 rounded-full text-white text-lg font-semibold bg-brand-primary hover:bg-brand-secondary transition-colors glow-button">
+                        Send Message
+                    </button>
+                </div>
+            </form>
+            
+            <div class="text-center mt-12 space-y-4">
+                 <p class="text-brand-text/80 gsap-animated" data-anim="fade-up" data-delay="0.8">Or reach us on:</p>
+                 <div class="flex justify-center gap-6">
+                     <!-- ADMIN NOTE: Replace '#' with your WhatsApp link --><a href="#" class="px-6 py-3 rounded-full font-semibold bg-green-500 text-white hover:bg-green-600 transition-all shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.9">
+                         WhatsApp Us
+                     </a>
+                     <!-- ADMIN NOTE: Replace '1234567890' with your phone number --><a href="tel:09999226846" class="px-6 py-3 rounded-full font-semibold bg-brand-accent text-white hover:bg-brand-accent/80 transition-all shadow-lg gsap-animated" data-anim="pop-in" data-delay="1.0">
+                         Call 099992 26846
+                     </a>
+                 </div>
             </div>
+
         </section>
 
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-brand-primary text-brand-secondary py-16">
+    <!-- Footer --><footer class="bg-brand-primary text-white py-16">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
-                <a href="#" class="text-3xl font-bold">
-                    Wall Artist
+                <a href="#" class="text-3xl font-bold font-sketch">
+                    Wall Art
                 </a>
-                <p class="mt-4 text-brand-secondary/80">Transforming spaces, one wall at a time.</p>
+                <p class="mt-4 text-white/80">Crafting digital dreams into reality.</p>
             </div>
             <div>
                 <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
                 <ul class="space-y-2">
-                    <li><a href="#about" class="hover:underline text-brand-secondary/80">About</a></li>
-                    <li><a href="#gallery" class="hover:underline text-brand-secondary/80">Gallery</a></li>
-                    <li><a href="#reviews" class="hover:underline text-brand-secondary/80">Reviews</a></li>
-                    <li><a href="#contact" class="hover:underline text-brand-secondary/80">Contact</a></li>
+                    <li><a href="#about" class="hover:underline text-white/80">About</a></li>
+                    <li><a href="#services" class="hover:underline text-white/80">Services</a></li>
+                    <li><a href="#gallery" class="hover:underline text-white/80">Gallery</a></li>
+                    <li><a href="#contact" class="hover:underline text-white/80">Contact</a></li>
                 </ul>
             </div>
             <div>
                 <h4 class="text-xl font-semibold mb-4">Connect</h4>
                 <div class="flex justify-center md:justify-start space-x-4">
-                    <!-- ADMIN NOTE: Replace '#' with your social media links -->
-                    <a href="#" aria-label="Instagram" class="text-2xl hover:text-white transition-all">Insta</a>
-                    <a href="#" aria-label="Pinterest" class="text-2xl hover:text-white transition-all">Pin</a>
+                    <!-- ADMIN NOTE: Replace '#' with your social media links --><a href="#" aria-label="Instagram" class="text-2xl hover:text-brand-secondary transition-all">Insta</a>
+                    <a href="#" aria-label="LinkedIn" class="text-2xl hover:text-brand-secondary transition-all">Linked</a>
+                    <a href="#" aria-label="Twitter" class="text-2xl hover:text-brand-secondary transition-all">Twit</a>
                 </div>
             </div>
         </div>
-        <div class="container mx-auto px-6 mt-12 text-center text-brand-secondary/70 border-t border-brand-secondary/20 pt-8">
-            <p>&copy; 2025 Wall Artist. All rights reserved.</p>
+        <div class="container mx-auto px-6 mt-12 text-center text-white/70 border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; 2025 Wall Art. All rights reserved.</p>
+            <a href="#hero" class="mt-4 md:mt-0 px-4 py-2 rounded-full bg-white/20 hover:bg-white/30 transition-all">
+                Back to Top &uarr;
+            </a>
         </div>
     </footer>
 
-    <!-- Lightbox Modal -->
-    <div id="lightbox">
+    <!-- Lightbox Modal (NEW: Updated with Swiper structure) --><div id="lightbox">
         <button id="close-lightbox" title="Close">&times;</button>
-        <div id="lightbox-content">
-            <!-- Content (image or video) will be injected here by JS -->
+        <div id="lightbox-content" class="h-full w-full p-4 md:p-8">
+            <!-- Swiper --><div class="swiper lightbox-swiper h-full w-full">
+                <div class="swiper-wrapper">
+                    <!-- Slides will be dynamically injected by JS --></div>
+                <!-- Add Pagination --><div class="swiper-pagination"></div>
+                <!-- Add Navigation --><div class="swiper-button-next"></div>
+                <div class="swiper-button-prev"></div>
+            </div>
         </div>
     </div>
 
 
-    <!-- Application JavaScript -->
-    <script>
+    <!-- Application JavaScript --><script>
         document.addEventListener('DOMContentLoaded', () => {
             
             // --- GSAP & ScrollTrigger Setup ---
             gsap.registerPlugin(ScrollTrigger);
-            
-            // MODIFICATION: Check for reduced motion
-            const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
             // --- Header Scroll Effect ---
             const header = document.getElementById('header');
@@ -965,16 +699,13 @@
                 start: 'top -80',
                 end: 99999,
                 onUpdate: (self) => {
-                    const isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-                    const bgColor = isDark ? 'bg-brand-bg/80' : 'bg-brand-bg/80';
-                    
                     if (self.direction === 1) { // Scrolling Down
-                        header.classList.add('py-2', bgColor, 'backdrop-blur-lg', 'shadow-lg');
-                        header.classList.remove('py-4');
+                        header.classList.add('py-2', 'bg-white/80', 'backdrop-blur-lg', 'shadow-lg');
+                        header.classList.remove('py-4', 'bg-transparent'); // Ensure initial transparent bg is removed
                     } else { // Scrolling Up
                         if (window.scrollY < 80) {
-                            header.classList.remove('py-2', bgColor, 'backdrop-blur-lg', 'shadow-lg');
-                            header.classList.add('py-4');
+                            header.classList.remove('py-2', 'bg-white/80', 'backdrop-blur-lg', 'shadow-lg');
+                            header.classList.add('py-4', 'bg-transparent');
                         }
                     }
                 }
@@ -986,76 +717,12 @@
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
+            // Close menu on link click
             mobileMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
                 });
             });
-
-            // --- Hero Animations ---
-            // 1. Staggered Letter Animation
-            const heroHeading = document.getElementById('hero-heading');
-            if (heroHeading) {
-                // Manual text split to avoid premium SplitText plugin
-                const text = heroHeading.textContent;
-                heroHeading.innerHTML = ''; // Clear original text
-                const chars = text.split('');
-                
-                chars.forEach(char => {
-                    const span = document.createElement('span');
-                    span.textContent = char;
-                    // Add styling to make spans transformable
-                    span.style.display = 'inline-block'; 
-                    span.style.marginRight = (char === ' ') ? '0.25em' : '0'; // Handle spaces
-                    heroHeading.appendChild(span);
-                });
-
-                gsap.from(heroHeading.querySelectorAll('span'), {
-                    duration: 0.8,
-                    opacity: 0,
-                    y: 30,
-                    ease: 'power3.out',
-                    stagger: 0.05,
-                    delay: 0.5
-                });
-            }
-            
-            // 2. Doodle Animations
-            const doodles = gsap.utils.toArray('.doodle');
-            doodles.forEach((doodle, i) => {
-                // Fade-in and draw
-                gsap.fromTo(doodle, 
-                    { opacity: 0, y: 20 },
-                    { 
-                        opacity: 1, 
-                        y: 0,
-                        duration: 1,
-                        delay: 0.8 + (i * 0.2), // Stagger the appearance
-                        ease: 'power2.out',
-                        onStart: () => {
-                            // Trigger draw animation on paths
-                            doodle.querySelectorAll('.draw-animation').forEach(path => {
-                                path.style.animationDelay = `${0.8 + (i * 0.2)}s`;
-                                path.classList.add('draw-animation');
-                            });
-                        }
-                    }
-                );
-            });
-
-            // 3. Parallax Effect
-            if (!prefersReducedMotion) {
-                gsap.to('#doodle-background', {
-                    y: (i, target) => ScrollTrigger.maxScroll(window) * -0.2, // Move up 20% of total scroll distance
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: '#hero',
-                        start: 'top top',
-                        end: 'bottom top',
-                        scrub: true,
-                    }
-                });
-            }
 
 
             // --- General GSAP Scroll-Triggered Animations ---
@@ -1067,14 +734,20 @@
                     opacity: 0,
                     scrollTrigger: {
                         trigger: elem,
-                        start: 'top 85%',
+                        start: 'top 85%', // Start animation when 85% from top
                         toggleActions: 'play none none none',
                     },
-                    delay: delay,
-                    duration: 0.8,
-                    ease: 'power3.out'
+                    duration: 1, // Default duration
+                    ease: 'power3.out', // Default ease
+                    delay: delay
                 };
 
+                if (animType === 'hero-content') {
+                    // Special case for hero content (no ScrollTrigger)
+                    delete animProps.scrollTrigger;
+                    gsap.from(elem, { opacity: 0, y: 30, duration: 1, delay: 0.5, ease: 'power3.out' });
+                    return; // Skip rest of the logic
+                }
                 if (animType === 'fade-up') {
                     animProps.y = 50;
                 } else if (animType === 'fade-left') {
@@ -1088,130 +761,8 @@
                 gsap.from(elem, animProps);
             });
 
-            // --- NEW: Animated Slideshow Logic ---
-            // ENTIRE BLOCK REMOVED
-            // --- END: Animated Slideshow Logic ---
 
-
-            // --- NEW: Gallery Item Slideshow Logic ---
-            const slideshowItem = document.querySelector('.gallery-item[data-slideshow="true"]');
-            
-            if (slideshowItem && !prefersReducedMotion) {
-                const slideshowContainer = slideshowItem.querySelector('.gallery-item-slideshow-inner');
-                const slideshowLoader = slideshowItem.querySelector('.gallery-item-loader');
-
-                // ADMIN NOTE: Add your image URLs here
-                const slideImages = [
-                    'https://lh3.googleusercontent.com/p/AF1QipNNkElcJ99CONtGZ6NLFV97TBW-3dW3xqrPgDaj=s1360-w1360-h1020-rw',
-                    'https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw',
-                    'https://lh3.googleusercontent.com/p/AF1QipOHh6Y2E9pFSbbIyf3JOeKPOnOfaqhuHHbebjWp=s1360-w1360-h1020-rw',
-                    'https://lh3.googleusercontent.com/p/AF1QipMEQKlJmWsEzF-6u7h0WiwHg17GcJnstAN0FQtS=s1360-w1360-h1020-rw',
-                    'httpsaggressively:lh3.googleusercontent.com/p/AF1QipNzSGaMgxKyG8AuCMurYRs_PvD8TJp5sLf07Cwq=s1360-w1360-h1020-rw',
-                    'https://lh3.googleusercontent.com/p/AF1QipO3IWlSfuubMF_eUO902pDrbxhK-F5Cr3GKgf9c=s1360-w1360-h1020-rw',
-                    'https://lh3.googleusercontent.com/p/AF1QipMwYtSCB5KvhiSvC2Q96X-YYxAXA_pvTv9OUqLF=s1360-w1360-h1020-rw',
-                    'httpsGgressively:lh3.googleusercontent.com/p/AF1QipMDEXD1EraOLMgyR-dojET-qyERTyusP0d3cyqP=w141-h101-n-k-no-nu',
-                    'httpsAggressively:lh3.googleusercontent.com/p/AF1QipPzieVjty4v5H1126fSd32YW8TQkucXa8_Ufh_2=w141-h176-n-k-no-nu',
-                    'https://lh3.googleusercontent.com/p/AF1QipPV5Rd0xH-crBcEXXCZJL_0YQxjHkfbQi6A9UcJ=s1360-w1360-h1020-rw'
-                ];
-
-                let currentIndex = 0;
-                let slides = [];
-                const slideDuration = 1000; // 1 second (was 2000)
-                const kenBurnsDuration = 1.5; // 1.5 seconds (was 3)
-
-                let slideshowTimeline = gsap.timeline({
-                    repeat: -1,
-                    onRepeat: nextGallerySlide,
-                    paused: true
-                });
-                slideshowTimeline.to({}, { duration: slideDuration / 1000 });
-
-                preloadImages(slideImages, initGallerySlideshow);
-
-                function preloadImages(urls, callback) {
-                    let loadedCount = 0;
-                    urls.forEach(url => {
-                        const img = new Image();
-                        img.src = url;
-                        img.onload = () => {
-                            loadedCount++;
-                            if (loadedCount === urls.length) {
-                                callback();
-                            }
-                        };
-                    });
-                }
-
-                function initGallerySlideshow() {
-                    if (slideshowLoader) {
-                        slideshowLoader.style.display = 'none';
-                    }
-
-                    slideImages.forEach(url => {
-                        const slide = document.createElement('div');
-                        slide.className = 'slide';
-                        slide.style.backgroundImage = `url('${url}')`;
-                        slideshowContainer.appendChild(slide);
-                        slides.push(slide);
-                    });
-
-                    gsap.set(slides[0], { opacity: 1 });
-                    applyKenBurns(slides[0]);
-                    slideshowTimeline.play();
-
-                    slideshowItem.addEventListener('mouseenter', () => slideshowTimeline.pause());
-                    slideshowItem.addEventListener('mouseleave', () => slideshowTimeline.resume());
-                    
-                    ScrollTrigger.create({
-                        trigger: slideshowItem,
-                        start: 'top bottom',
-                        end: 'bottom top',
-                        onToggle: (self) => {
-                            if (self.isActive) {
-                                slideshowTimeline.play();
-                            } else {
-                                slideshowTimeline.pause();
-                            }
-                        }
-                    });
-                }
-
-                function applyKenBurns(slide) {
-                    const randomX = (Math.random() - 0.5) * 4; // -2% to +2%
-                    const randomScale = 1 + (Math.random() * 0.1); // 1.0 to 1.1
-                    
-                    gsap.fromTo(slide, 
-                        { scale: randomScale, x: `${randomX}%` }, 
-                        { scale: 1, x: '0%', duration: kenBurnsDuration, ease: 'none' }
-                    );
-                }
-
-                function nextGallerySlide() {
-                    let lastIndex = currentIndex;
-                    currentIndex = (currentIndex + 1) % slides.length;
-
-                    let lastSlide = slides[lastIndex];
-                    let nextSlide = slides[currentIndex];
-
-                    gsap.to(lastSlide, { opacity: 0, duration: 1.5, ease: 'power2.inOut' });
-                    gsap.set(nextSlide, { opacity: 1 });
-                    applyKenBurns(nextSlide);
-                }
-            } else if (slideshowItem) {
-                // Handle reduced motion: just show the first image
-                const slideshowLoader = slideshowItem.querySelector('.gallery-item-loader');
-                if (slideshowLoader) slideshowLoader.style.display = 'none';
-                
-                const slide = document.createElement('div');
-                slide.className = 'slide';
-                slide.style.backgroundImage = `url('https://lh3.googleusercontent.com/p/AF1QipNNkElcJ99CONtGZ6NLFV97TBW-3dW3xqrPgDaj=s1360-w1360-h1020-rw')`;
-                slide.style.opacity = '1';
-                slideshowItem.querySelector('.gallery-item-slideshow-inner').appendChild(slide);
-            }
-            // --- END: Gallery Item Slideshow Logic ---
-
-
-            // --- Gallery GSAP Animations (MODIFIED) ---
+            // --- Gallery GSAP Animations ---
             gsap.utils.toArray('.gallery-item').forEach(item => {
                 const animType = item.dataset.animGallery || 'fade-up';
                 let animProps = {
@@ -1238,101 +789,251 @@
                     animProps.scale = 1.05;
                 }
                 
-                gsap.from(item, {
-                    ...animProps,
-                    duration: 0.8,
-                    ease: 'power3.out',
-                    onComplete: () => {
-                        // --- NEW "LIVE" ANIMATION ---
-                        if (prefersReducedMotion) return; // Check for reduced motion
+                gsap.from(item, animProps);
 
-                        gsap.to(item, {
-                            y: (Math.random() - 0.5) * 8, // Random float up/down (range: -4px to +4px)
-                            rotation: (Math.random() - 0.5) * 4, // Random tilt (range: -2deg to +2deg)
-                            repeat: -1, // Infinite loop
-                            yoyo: true, // Go back and forth
-                            ease: 'sine.inOut',
-                            duration: 3 + Math.random() * 2, // Random duration for organic feel (3-5s)
-                            delay: Math.random() * 1.5 // Stagger start times
-                        });
-                        // --- END NEW "LIVE" ANIMATION ---
-                    }
+                // Add tilt effect on hover
+                item.addEventListener('mousemove', (e) => {
+                    const rect = item.getBoundingClientRect();
+                    const x = e.clientX - rect.left - rect.width / 2;
+                    const y = e.clientY - rect.top - rect.height / 2;
+                    const rotateX = -y / 20; // Max rotation
+                    const rotateY = x / 20;
+                    gsap.to(item, {
+                        rotationX: rotateX,
+                        rotationY: rotateY,
+                        transformPerspective: 1000,
+                        scale: 1.03,
+                        ease: 'power1.out',
+                        duration: 0.4
+                    });
+                });
+
+                item.addEventListener('mouseleave', () => {
+                    gsap.to(item, {
+                        rotationX: 0,
+                        rotationY: 0,
+                        scale: 1,
+                        ease: 'power1.out',
+                        duration: 0.4
+                    });
                 });
             });
-            
-            // --- NEW GALLERY PARALLAX ---
-            if (!prefersReducedMotion) {
-                gsap.to('.gallery-item', {
-                    yPercent: -5, // Move items up 5% of their own height as you scroll down
-                    ease: 'none',
-                    scrollTrigger: {
-                        trigger: '#gallery',
-                        start: 'top bottom', // Start when gallery top hits bottom of viewport
-                        end: 'bottom top', // End when gallery bottom hits top of viewport
-                        scrub: true,
-                    }
-                });
-            }
 
-            // --- Lightbox Logic ---
+            // --- Lightbox Logic (NEW: Replaced with Swiper Carousel logic) ---
             const lightbox = document.getElementById('lightbox');
-            const lightboxContent = document.getElementById('lightbox-content');
             const closeLightboxBtn = document.getElementById('close-lightbox');
             const galleryItems = document.querySelectorAll('.gallery-item');
+            const swiperWrapper = document.querySelector('#lightbox-content .swiper-wrapper');
+            let lightboxSwiper = null;
 
-            galleryItems.forEach(item => {
-                item.addEventListener('click', () => {
-                    const videoSrc = item.dataset.videoSrc;
-                    const imgSrc = item.dataset.src;
-                    
-                    lightboxContent.innerHTML = ''; // Clear content
+            // 1. Gather all slide data on load
+            const slidesData = Array.from(galleryItems).map(item => ({
+                imgSrc: item.dataset.src,
+                videoSrc: item.dataset.videoSrc
+            }));
 
-                    if (videoSrc) {
-                        const video = document.createElement('video');
-                        video.src = videoSrc;
-                        video.controls = true;
-                        video.autoplay = true;
-                        video.loop = true;
-                        lightboxContent.appendChild(video);
-                    } else if (imgSrc) {
-                        const img = document.createElement('img');
-                        img.src = imgSrc;
-                        img.alt = "Lightbox image";
-                        lightboxContent.appendChild(img);
+            // 2. Create function to open lightbox
+            function openLightbox(index) {
+                // 3. Clear existing slides
+                if (swiperWrapper) {
+                    swiperWrapper.innerHTML = '';
+                }
+
+                // 4. Populate slides
+                slidesData.forEach(slide => {
+                    let slideHTML = '';
+                    if (slide.videoSrc) {
+                        slideHTML = `
+                            <div class="swiper-slide">
+                                <video src="${slide.videoSrc}" controls autoplay loop playsinline poster="${slide.imgSrc || ''}"></video>
+                            </div>
+                        `;
+                    } else if (slide.imgSrc) {
+                        slideHTML = `
+                            <div class="swiper-slide">
+                                <img src="${slide.imgSrc}" alt="Gallery image">
+                            </div>
+                        `;
                     }
+                    if (swiperWrapper) {
+                        swiperWrapper.innerHTML += slideHTML;
+                    }
+                });
 
-                    lightbox.classList.add('active');
-                    document.body.style.overflow = 'hidden';
+                // 5. Show lightbox
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+
+                // 6. Initialize Swiper
+                lightboxSwiper = new Swiper('.lightbox-swiper', {
+                    loop: true,
+                    autoplay: {
+                        delay: 3500, // "live animation"
+                        disableOnInteraction: false,
+                    },
+                    initialSlide: index,
+                    navigation: {
+                        nextEl: '.swiper-button-next',
+                        prevEl: '.swiper-button-prev',
+                    },
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                    },
+                    keyboard: {
+                        enabled: true,
+                    },
+                    // Stop video when sliding
+                    on: {
+                        slideChange: function () {
+                            // Pause video in the previously active slide
+                            if (this.slides[this.previousIndex]) {
+                                const video = this.slides[this.previousIndex].querySelector('video');
+                                if (video) {
+                                    video.pause();
+                                }
+                            }
+                        },
+                        transitionEnd: function() {
+                            // Autoplay video in the new active slide
+                            if (this.slides[this.activeIndex]) {
+                                const video = this.slides[this.activeIndex].querySelector('video');
+                                if (video) {
+                                    video.play();
+                                }
+                            }
+                        }
+                    },
+                });
+            }
+
+            // 7. Create function to close lightbox
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                if (lightboxSwiper) {
+                    lightboxSwiper.destroy(true, true); // Destroy instance
+                    lightboxSwiper = null;
+                }
+                if (swiperWrapper) {
+                    swiperWrapper.innerHTML = ''; // Clear HTML
+                }
+            }
+
+            // 8. Add click listeners to gallery items
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', (e) => {
+                    e.preventDefault(); // Prevent any default browser behavior
+                    openLightbox(index);
                 });
             });
 
-            function closeLightbox() {
-                lightbox.classList.remove('active');
-                lightboxContent.innerHTML = '';
-                document.body.style.overflow = 'auto';
-            }
-
+            // 9. Add close listeners
             closeLightboxBtn.addEventListener('click', closeLightbox);
             lightbox.addEventListener('click', (e) => {
+                // Close if clicking on the background, not the content
                 if (e.target === lightbox) {
                     closeLightbox();
                 }
             });
+
+            // --- Reviews Carousel Logic ---
+            const carousel = document.getElementById('review-carousel');
+            const prevBtn = document.getElementById('prev-review');
+            const nextBtn = document.getElementById('next-review');
+            const reviewCards = document.querySelectorAll('.review-card');
             
-            // Close lightbox with Escape key
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && lightbox.classList.contains('active')) {
-                    closeLightbox();
+            // Check if carousel elements exist before proceeding
+            if (carousel && prevBtn && nextBtn && reviewCards.length > 0) {
+                let currentIndex = 0;
+                let totalItems = reviewCards.length;
+                let itemsToSlide = 1; // Default
+                
+                function updateItemsToSlide() {
+                    if (window.innerWidth >= 1024) {
+                        itemsToSlide = 3;
+                    } else if (window.innerWidth >= 768) {
+                        itemsToSlide = 2;
+                    } else {
+                        itemsToSlide = 1;
+                    }
+                    // Ensure totalItems is correct if it's not a multiple
+                    totalItems = Math.ceil(reviewCards.length / itemsToSlide) * itemsToSlide;
+                    // Re-append clones if needed to ensure smooth looping
+                    setupCarouselClones();
                 }
-            });
+
+                // Clone items for infinite loop illusion
+                function setupCarouselClones() {
+                    // Clear existing clones
+                    carousel.querySelectorAll('.clone').forEach(clone => clone.remove());
+                    
+                    if (reviewCards.length <= itemsToSlide) {
+                         prevBtn.style.display = 'none';
+                         nextBtn.style.display = 'none';
+                         return;
+                    } else {
+                        prevBtn.style.display = 'block';
+                        nextBtn.style.display = 'block';
+                    }
+
+                    // Add clones to the end
+                    for(let i = 0; i < itemsToSlide; i++) {
+                        const clone = reviewCards[i].cloneNode(true);
+                        clone.classList.add('clone');
+                        carousel.appendChild(clone);
+                    }
+                    // Add clones to the beginning
+                    for(let i = reviewCards.length - 1; i >= reviewCards.length - itemsToSlide; i--) {
+                        const clone = reviewCards[i].cloneNode(true);
+                        clone.classList.add('clone');
+                        carousel.prepend(clone);
+                    }
+
+                    // Initial position
+                    currentIndex = itemsToSlide;
+                    carousel.style.transition = 'none';
+                    carousel.style.transform = `translateX(-${currentIndex * (100 / itemsToSlide)}%)`;
+                }
+
+
+                function moveCarousel(direction) {
+                    carousel.style.transition = 'transform 0.5s ease-in-out';
+                    currentIndex += direction;
+                    carousel.style.transform = `translateX(-${currentIndex * (100 / itemsToSlide)}%)`;
+                    
+                    // Loop check
+                    if (currentIndex >= reviewCards.length + itemsToSlide) {
+                        setTimeout(() => {
+                            carousel.style.transition = 'none';
+                            currentIndex = itemsToSlide;
+                            carousel.style.transform = `translateX(-${currentIndex * (100 / itemsToSlide)}%)`;
+                        }, 500);
+                    } else if (currentIndex <= 0) {
+                         setTimeout(() => {
+                            carousel.style.transition = 'none';
+                            currentIndex = reviewCards.length;
+                            carousel.style.transform = `translateX(-${currentIndex * (100 / itemsToSlide)}%)`;
+                        }, 500);
+                    }
+                }
+
+                nextBtn.addEventListener('click', () => moveCarousel(1));
+                prevBtn.addEventListener('click', () => moveCarousel(-1));
+
+                // Auto-play
+                let autoPlayInterval = setInterval(() => moveCarousel(1), 5000);
+                carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+                carousel.addEventListener('mouseleave', () => autoPlayInterval = setInterval(() => moveCarousel(1), 5000));
+                
+                // Initial & resize setup
+                updateItemsToSlide();
+                window.addEventListener('resize', updateItemsToSlide);
+            }
 
         });
     </script>
 </body>
 </html>
-
-
-
-
 
 
