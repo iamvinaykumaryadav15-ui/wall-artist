@@ -3,70 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vibrant Client Portfolio | Animated & Interactive</title>
-
-    <!-- Meta Tags for SEO --><meta name="description" content="A vibrant, colorful, and interactive portfolio website with dynamic animations, a media gallery, and more.">
-    <meta property="og:title" content="Vibrant Client Portfolio">
-    <meta property="og:description" content="Explore our work in this animated and visually engaging portfolio.">
-    <meta property="og:image" content="https://placehold.co/1200x630/7c3aed/white?text=Our+Portfolio">
+    <!-- UPDATED: Meta tags for Wall Artist -->
+    <title>The Muralist | Custom Wall Art & Mural Artist Portfolio</title>
+    <meta name="description" content="Portfolio of a professional mural artist. Specializing in custom wall murals, 3D wall textures, and live painting events.">
+    <meta property="og:title" content="The Muralist | Custom Wall Art Portfolio">
+    <meta property="og:description" content="Explore custom murals, 3D wall art, and digital mockups.">
+    <meta property="og:image" content="https://placehold.co/1200x630/FFD400/000000?text=The+Muralist">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary_large_image">
 
-    <!-- Google Fonts: Inter --><link rel="preconnect" href="https://fonts.googleapis.com">
+    <!-- Google Fonts: Kalam (Headlines) & Inter (Body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Kalam:wght@700&display=swap" rel="stylesheet">
 
-    <!-- Swiper.js CSS (Added for Lightbox Carousel) --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <!-- Swiper.js CSS (for Lightbox) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
-    <!-- Tailwind CSS --><script src="https://cdn.tailwindcss.com"></script>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
 
-    <!-- GSAP (GreenSock Animation Platform) & ScrollTrigger Plugin --><script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <!-- GSAP (GreenSock Animation Platform) & ScrollTrigger Plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-    <!-- Swiper.js JS (Added for Lightbox Carousel) --><script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <!-- Swiper.js JS (for Lightbox) -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     fontFamily: {
+                        // UPDATED: Font mapping
                         sans: ['Inter', 'sans-serif'],
                         sketch: ['Kalam', 'cursive'],
                     },
                     colors: {
-                        'brand-primary': 'var(--color-primary)',
-                        'brand-secondary': 'var(--color-secondary)',
-                        'brand-accent': 'var(--color-accent)',
-                        'brand-bg': 'var(--color-bg)',
-                        'brand-text': 'var(--color-text)',
+                        // UPDATED: New brand palette
+                        'brand-yellow': '#FFD400',
+                        'brand-black': '#000000',
+                        'brand-white': '#FFFFFF',
+                        'brand-text': '#1f2937', // Dark neutral for body
+                        'brand-text-light': '#4b5563', // Lighter gray
                     },
                     animation: {
-                        'gradient-wave': 'gradientWave 15s ease infinite',
-                        'ken-burns': 'kenBurns 20s ease-out infinite',
-                        'float-slow': 'floatSlow 6s ease-in-out infinite',
-                        'glow-border': 'glowBorder 4s ease-in-out infinite',
-                        'slide-in': 'slideIn 1s ease-out',
+                        // UPDATED: Ken Burns for hero bg texture
+                        'ken-burns': 'kenBurns 30s ease-out infinite',
+                        'float-slow': 'floatSlow 8s ease-in-out infinite alternate',
+                        'float-fast': 'floatSlow 6s ease-in-out infinite alternate-reverse',
+                        'draw-star': 'drawStar 1s ease-out forwards',
                     },
                     keyframes: {
-                        gradientWave: {
-                            '0%, 100%': { backgroundPosition: '0% 50%' },
-                            '50%': { backgroundPosition: '100% 50%' },
-                        },
                         kenBurns: {
-                            '0%': { transform: 'scale(1) translate(0, 0)' },
-                            '50%': { transform: 'scale(1.1) translate(-2%, 2%)' },
-                            '100%': { transform: 'scale(1) translate(0, 0)' },
+                            '0%': { transform: 'scale(1) translate(0, 0)', opacity: 0.4 },
+                            '50%': { transform: 'scale(1.1) translate(-2%, 2%)', opacity: 0.6 },
+                            '100%': { transform: 'scale(1) translate(0, 0)', opacity: 0.4 },
                         },
                         floatSlow: {
-                            '0%, 100%': { transform: 'translateY(0)' },
-                            '50%': { transform: 'translateY(-20px)' },
+                            '0%': { transform: 'translateY(0) translateX(0) rotate(0deg)' },
+                            '50%': { transform: 'translateY(-15px) translateX(10px) rotate(3deg)' },
+                            '100%': { transform: 'translateY(0) translateX(0) rotate(0deg)' },
                         },
-                        glowBorder: {
-                            '0%, 100%': { 'box-shadow': '0 0 20px var(--color-accent, #0ea5e9)' },
-                            '50%': { 'box-shadow': '0 0 35px var(--color-primary, #a855f7)' },
-                        },
-                        slideIn: {
-                            'from': { transform: 'translateY(30px)', opacity: '0' },
-                            'to': { transform: 'translateY(0)', opacity: '1' },
+                        drawStar: {
+                            'from': { 'stroke-dashoffset': 100 },
+                            'to': { 'stroke-dashoffset': 0 },
                         }
                     }
                 }
@@ -74,44 +75,81 @@
         }
     </script>
 
-    <!-- Custom Styles --><style>
-        /* Light Mode Color Scheme (Default) */
+    <!-- Custom Styles -->
+    <style>
+        /* UPDATED: Set global theme */
         :root {
-            --color-primary: #3b82f6; /* Blue */
-            --color-secondary: #d946ef; /* Magenta */
-            --color-accent: #22c55e; /* Green */
-            --color-bg: #ffffff; /* White */
+            --color-primary: #FFD400; /* Yellow */
+            --color-secondary: #000000; /* Black */
+            --color-accent: #1f2937; /* Dark Gray */
+            --color-bg: #FFFFFF; /* White */
             --color-text: #1f2937; /* Dark Gray */
-            --color-bg-darker: #f3f4f6; /* Light Gray */
-        }
-
-        /* Dark Mode Color Scheme */
-        @media (prefers-color-scheme: dark) {
-            :root {
-                --color-primary: #60a5fa; /* Light Blue */
-                --color-secondary: #e879f9; /* Light Magenta */
-                --color-accent: #4ade80; /* Light Green */
-                --color-bg: #111827; /* Dark Gray */
-                --color-text: #f3f4f6; /* Light Gray */
-                --color-bg-darker: #1f2937; /* Darker Gray */
-            }
+            --color-bg-darker: #f9fafb; /* Off-white */
         }
 
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #facc15; /* Changed to solid yellow */
+            background-color: var(--color-primary); /* Solid Yellow BG */
             color: var(--color-text);
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
         }
-
-        /* Gradient Backgrounds - Still defined but not used for main body */
-        .gradient-bg {
-            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary), var(--color-accent));
-            background-size: 400% 400%;
+        
+        /* Main content sections styling */
+        .content-section {
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border-radius: 1rem; /* 16px */
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);
+            padding: 2rem;
+            margin-top: 6rem;
+            margin-bottom: 6rem;
+            overflow: hidden;
+        }
+        
+        @media (min-width: 768px) {
+            .content-section {
+                padding: 3rem;
+            }
         }
 
-        /* Glowing Button Effect */
+        /* Hero: Painterly Texture Background */
+        #hero::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background-image: url('https://www.transparenttextures.com/patterns/brush-strokes.png');
+            background-size: 400px;
+            opacity: 0.4;
+            animation: kenBurns 30s ease-out infinite;
+            z-index: 1;
+        }
+
+        /* Hero: Staggered Letter Animation */
+        #hero-headline span {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(30px) rotate(10deg);
+        }
+        
+        /* Hero: SVG Doodles */
+        .sketch-doodle {
+            position: absolute;
+            stroke: #000000;
+            stroke-width: 2;
+            fill: none;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            z-index: 20;
+            /* GSAP will animate this */
+        }
+        .sketch-doodle path {
+            stroke-dasharray: 1000;
+            stroke-dashoffset: 1000;
+        }
+        
+        /* Hero: Button Glow */
         .glow-button {
             position: relative;
             overflow: hidden;
@@ -120,21 +158,22 @@
         }
         .glow-button:hover {
             transform: translateY(-2px);
-            box-shadow: 0 0 25px var(--color-accent), 0 0 15px var(--color-primary);
+            /* Paint-glow hover */
+            box-shadow: 0 0 20px 0px rgba(0,0,0,0.4), 0 0 10px 0px rgba(0,0,0,0.2);
         }
 
-        /* Service Card Glow on Hover */
+        /* Service Card Hover */
         .service-card {
             border: 2px solid transparent;
             transition: all 0.4s ease;
         }
         .service-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--color-accent);
-            box-shadow: 0 0 30px -5px var(--color-accent);
+            transform: translateY(-8px);
+            border-color: var(--color-primary);
+            box-shadow: 0 10px 30px -5px var(--color-primary);
         }
 
-        /* Gallery Masonry Layout */
+        /* Gallery Masonry Layout (Unchanged) */
         .gallery-container {
             column-count: 1;
             column-gap: 1.5rem; /* 24px */
@@ -149,6 +188,8 @@
                 column-count: 3;
             }
         }
+        
+        /* --- NEW: Gallery Item Multi-Image Cycling --- */
         .gallery-item {
             break-inside: avoid;
             margin-bottom: 1.5rem; /* 24px */
@@ -156,43 +197,90 @@
             overflow: hidden;
             box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
             transition: all 0.4s ease;
-            transform: translateZ(0); /* Promotes to hardware layer */
+            transform: translateZ(0); /* Hardware layer */
+            position: relative; /* For image stacking */
+            cursor: pointer;
+            background: #e5e7eb; /* Placeholder bg */
         }
         
-        /* Gallery Item Hover Effect */
-        .gallery-item::before {
-            content: '';
+        .gallery-item .gallery-image {
             position: absolute;
-            top: 0;
-            left: 0;
+            top: 0; left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.3), rgba(217, 70, 239, 0.3)); /* Updated gradient for overlay */
+            object-fit: cover;
             opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 1;
+            transition: opacity 1s ease-in-out, transform 0.4s ease;
+            /* Ken Burns for cycling */
+            animation: kenBurns 15s ease-out infinite; 
         }
-        .gallery-item:hover::before {
+        .gallery-item .gallery-image.active {
             opacity: 1;
         }
-        .gallery-item img, .gallery-item video {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: transform 0.4s ease;
+        
+        /* Ensure non-absolute image for single-image tiles */
+        .gallery-item .gallery-image.single {
+             position: relative;
+             display: block;
+             width: 100%;
+             height: auto;
+             opacity: 1;
+             animation: none; /* No Ken Burns on single static image */
         }
-        .gallery-item:hover img, .gallery-item:hover video {
-            transform: scale(1.05);
+        
+        /* NEW: Gallery Hover Overlay & Caption */
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+            padding: 2.5rem 1rem 1rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.4s ease;
+            z-index: 10;
+            color: white;
+            font-weight: 600;
+        }
+        /* NEW: Gallery Sketch Border on Hover */
+        .gallery-item .sketch-border {
+            position: absolute;
+            top: 5px; left: 5px; right: 5px; bottom: 5px;
+            stroke: var(--color-primary);
+            stroke-width: 3;
+            fill: none;
+            z-index: 11;
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        .gallery-item .sketch-border path {
+            stroke-dasharray: 1500;
+            stroke-dashoffset: 1500;
+            transition: stroke-dashoffset 0.8s ease 0.1s;
+        }
+        
+        .gallery-item:hover .gallery-image {
+             transform: scale(1.05);
+             animation-play-state: paused; /* Pause Ken Burns */
+        }
+        .gallery-item:hover .overlay {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .gallery-item:hover .sketch-border {
+             opacity: 1;
+        }
+        .gallery-item:hover .sketch-border path {
+            stroke-dashoffset: 0;
         }
 
-        /* Lightbox Modal */
+        /* Lightbox Modal (Unchanged) */
         #lightbox {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.9);
+            background: rgba(0, 0, 0, 0.95);
             z-index: 1000;
             display: flex;
             align-items: center;
@@ -210,17 +298,8 @@
             position: relative;
             max-width: 90vw;
             max-height: 90vh;
-            animation: slideIn 0.5s ease-out forwards;
-            /* Added h-full w-full for swiper */
             width: 100%;
             height: 100%;
-        }
-        #lightbox-content img, #lightbox-content video {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            max-height: 90vh;
-            border-radius: 0.5rem;
         }
         #close-lightbox {
             position: absolute;
@@ -230,14 +309,11 @@
             color: white;
             cursor: pointer;
             transition: transform 0.3s ease;
-            /* Ensure close button is on top */
             z-index: 1050; 
         }
         #close-lightbox:hover {
             transform: scale(1.1);
         }
-
-        /* Lightbox Swiper Styles */
         #lightbox .swiper-slide {
             display: flex;
             align-items: center;
@@ -248,6 +324,7 @@
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
+            border-radius: 0.5rem;
         }
         #lightbox .swiper-pagination-bullet-active {
             background: var(--color-primary) !important;
@@ -255,31 +332,63 @@
         #lightbox .swiper-button-next,
         #lightbox .swiper-button-prev {
             color: #ffffff !important;
-            opacity: 0.7;
-            transition: opacity 0.3s ease;
-        }
-        #lightbox .swiper-button-next:hover,
-        #lightbox .swiper-button-prev:hover {
-            opacity: 1;
         }
 
-        /* Reviews Carousel */
-        .review-carousel {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
+        /* NEW: Reviews Section */
+        .review-star {
+            stroke: var(--color-primary);
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 100;
+            stroke-dashoffset: 100;
         }
-        .review-card {
-            flex: 0 0 100%;
+        .review-star.filled {
+             fill: var(--color-primary);
         }
-        @media (min-width: 768px) {
-            .review-card {
-                flex: 0 0 50%;
-            }
+
+        /* NEW: Map Section Styling */
+        .map-container {
+            position: relative;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
-        @media (min-width: 1024px) {
-            .review-card {
-                flex: 0 0 33.333%;
-            }
+        .map-container iframe {
+            /* Custom map tint */
+            filter: grayscale(80%) sepia(20%) hue-rotate(10deg) saturate(150%) brightness(105%);
+        }
+        /* Brushstroke frame */
+        .map-container::before {
+            content: '';
+            position: absolute;
+            top: -15px; left: -15px; right: -15px; bottom: -15px;
+            border: 15px solid;
+            border-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 10 C 1 2, 0 16, 12 18 L 86 18 C 99 15, 99 4, 91 8 L 91 89 C 97 98, 88 100, 84 90 L 12 90 C 2 96, 1 85, 12 85 Z' fill='none' stroke='%23000000' stroke-width='2'/%3E%3C/svg%3E") 20 / 20px / 0px stretch;
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--color-secondary); /* Black */
+            color: var(--color-primary); /* Yellow text */
+        }
+        footer a {
+            color: var(--color-white);
+        }
+        footer a:hover {
+            color: var(--color-primary);
+        }
+        footer .footer-bottom {
+            border-top-color: rgba(255, 212, 0, 0.2); /* Yellow/20 */
+            color: rgba(255, 212, 0, 0.7);
+        }
+        footer .footer-bottom a {
+            background: rgba(255, 212, 0, 0.1);
+            color: var(--color-primary);
+        }
+        footer .footer-bottom a:hover {
+             background: rgba(255, 212, 0, 0.2);
         }
 
         /* Respects Reduced Motion */
@@ -292,9 +401,13 @@
                 transition-duration: 0.01ms !important;
                 scroll-behavior: auto !important;
             }
-            .gsap-animated {
+            .gsap-animated, #hero-headline span, .sketch-doodle path {
                 opacity: 1 !important;
                 transform: none !important;
+                stroke-dashoffset: 0 !important;
+            }
+            .gallery-item .gallery-image {
+                animation: none;
             }
         }
 
@@ -303,283 +416,481 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: var(--color-bg-darker);
+            background: #424242;
         }
         ::-webkit-scrollbar-thumb {
             background-color: var(--color-primary);
             border-radius: 20px;
-            border: 2px solid var(--color-bg-darker);
         }
         ::-webkit-scrollbar-thumb:hover {
-            background-color: var(--color-secondary);
+            background-color: #fff;
         }
-
     </style>
 </head>
-<!-- YAHAN BADLA HAI: 'gradient-bg' aur 'animate-gradient-wave' classes hataye hai --><body class="overflow-x-hidden">
+<body class="overflow-x-hidden">
 
-    <!-- Header & Navigation --><header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="header">
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300" id="header">
         <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#" class="text-3xl font-bold text-brand-text font-sketch">
+            <!-- UPDATED: Logo and text color -->
+            <a href="#" class="text-3xl font-bold text-brand-black font-sketch">
                 Wall Art
             </a>
-            <!-- Mobile Menu Button --><button id="mobile-menu-btn" class="md:hidden text-brand-text focus:outline-none">
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn" class="md:hidden text-brand-black focus:outline-none">
                 <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
-            <!-- Desktop Menu --><div class="hidden md:flex space-x-8 items-center">
-                <a href="#about" class="hover:text-brand-primary transition-colors">About</a>
-                <a href="#services" class="hover:text-brand-primary transition-colors">Services</a>
-                <a href="#gallery" class="hover:text-brand-primary transition-colors">Gallery</a>
-                <a href="#reviews" class="hover:text-brand-primary transition-colors">Reviews</a>
-                <a href="#contact" class="px-5 py-2 rounded-full text-white bg-brand-primary hover:bg-brand-secondary transition-colors glow-button">
-                    Get in Touch
+            <!-- Desktop Menu -->
+            <div class="hidden md:flex space-x-8 items-center text-brand-black font-semibold">
+                <a href="#about" class="hover:text-brand-text-light transition-colors">About</a>
+                <a href="#services" class="hover:text-brand-text-light transition-colors">Services</a>
+                <a href="#gallery" class="hover:text-brand-text-light transition-colors">Gallery</a>
+                <a href="#reviews" class="hover:text-brand-text-light transition-colors">Reviews</a>
+                <!-- UPDATED: Button style -->
+                <a href="#contact" class="px-5 py-2 rounded-full text-brand-black bg-brand-white hover:bg-brand-white/80 transition-colors glow-button">
+                    Get a Quote
                 </a>
             </div>
         </nav>
-        <!-- Mobile Menu (Hidden by default) --><div id="mobile-menu" class="hidden md:hidden bg-brand-bg/90 backdrop-blur-sm shadow-lg absolute top-full left-0 w-full">
-            <a href="#about" class="block px-6 py-3 text-center hover:bg-brand-primary/20">About</a>
-            <a href="#services" class="block px-6 py-3 text-center hover:bg-brand-primary/20">Services</a>
-            <a href="#gallery" class="block px-6 py-3 text-center hover:bg-brand-primary/20">Gallery</a>
-            <a href="#reviews" class="block px-6 py-3 text-center hover:bg-brand-primary/20">Reviews</a>
-            <a href="#contact" class="block px-6 py-4 text-center text-white bg-brand-primary hover:bg-brand-secondary transition-colors">
-                Get in Touch
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-brand-white/95 backdrop-blur-sm shadow-lg absolute top-full left-0 w-full text-brand-black">
+            <a href="#about" class="block px-6 py-3 text-center hover:bg-brand-yellow/50">About</a>
+            <a href="#services" class="block px-6 py-3 text-center hover:bg-brand-yellow/50">Services</a>
+            <a href="#gallery" class="block px-6 py-3 text-center hover:bg-brand-yellow/50">Gallery</a>
+            <a href="#reviews" class="block px-6 py-3 text-center hover:bg-brand-yellow/50">Reviews</a>
+            <a href="#contact" class="block px-6 py-4 text-center text-brand-black font-bold bg-brand-yellow hover:bg-brand-yellow/80 transition-colors">
+                Get a Quote
             </a>
         </div>
     </header>
 
-    <!-- Hero Section --><section id="hero" class="relative h-screen w-full flex items-center justify-center text-center text-white overflow-hidden">
-        <!-- Background Image --><img 
-            src="image_ec9c5e.jpg" 
-            alt="Wall Art Background" 
-            class="absolute top-0 left-0 w-full h-full object-cover z-0 animate-ken-burns"
-            onerror="this.onerror=null;this.src='https://placehold.co/1920x1080/facc15/1f2937?text=Wall+Art+Idea';"
-        >
-
-        <!-- Overlay --><div class="absolute top-0 left-0 w-full h-full bg-black/50 z-10"></div>
+    <!-- Hero Section -->
+    <section id="hero" class="relative h-screen w-full flex items-center justify-center text-center overflow-hidden bg-brand-yellow">
+        <!-- Background texture is applied via CSS ::before -->
         
-        <!-- Animated Gradient Overlay - Removed, as per user's request for solid yellow --><!-- <div class="absolute top-0 left-0 w-full h-full z-20 opacity-30 gradient-bg animate-gradient-wave"></div> --><!-- Content --><div class="relative z-30 p-6 max-w-3xl gsap-animated" data-anim="hero-content">
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-black mb-4 leading-tight">
-                Vibrant. Colorful. Alive.
+        <!-- NEW: Animated SVG Doodles -->
+        <svg class="sketch-doodle hidden md:block" width="150" height="150" viewBox="0 0 100 100" style="top: 15%; left: 10%;" data-anim="float-slow">
+            <path d="M20,30 Q30,10 40,30 T60,30 T80,30 M20,50 Q30,30 40,50 T60,50 T80,50 M20,70 Q30,50 40,70 T60,70 T80,70" />
+        </svg>
+        <svg class="sketch-doodle" width="200" height="200" viewBox="0 0 100 100" style="top: 60%; left: 5%;" data-anim="float-fast">
+            <path d="M50 10 C 20 20, 20 80, 50 90 C 80 80, 80 20, 50 10 Z M 50 30 C 40 40, 40 60, 50 70 C 60 60, 60 40, 50 30 Z" />
+        </svg>
+        <svg class="sketch-doodle" width="120" height="120" viewBox="0 0 100 100" style="top: 20%; right: 8%;" data-anim="float-slow">
+            <path d="M10 10 L 90 90 M 90 10 L 10 90 M 50 10 V 90 M 10 50 H 90" />
+        </svg>
+        <svg class="sketch-doodle hidden md:block" width="180" height="180" viewBox="0 0 100 100" style="bottom: 10%; right: 10%;" data-anim="float-fast">
+             <path d="M30 20 C 10 40, 10 70, 30 80 L 70 80 C 90 70, 90 40, 70 20 Z" />
+        </svg>
+        
+        <!-- Content -->
+        <div class="relative z-30 p-6 max-w-4xl text-brand-white">
+            <!-- UPDATED: Headline with spans for animation -->
+            <h1 id="hero-headline" class="text-6xl md:text-8xl lg:text-9xl font-black mb-4 leading-tight font-sketch" data-editable="hero-headline">
+                <span>W</span><span>a</span><span>l</span><span>l</span><span>s</span>
+                <span>T</span><span>h</span><span>a</span><span>t</span>
+                <span>T</span><span>a</span><span>l</span><span>k</span><span>.</span>
             </h1>
-            <p class="text-lg md:text-2xl mb-8 font-light">
-                We craft stunning digital experiences that tell your story with motion and life.
+            <!-- UPDATED: Subtext -->
+            <p class="text-lg md:text-2xl mb-8 font-semibold text-brand-black max-w-2xl mx-auto" data-editable="hero-subtext">
+                From blank spaces to bold statements. Your vision, painted to life.
             </p>
+            <!-- UPDATED: Buttons -->
             <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#contact" class="px-8 py-4 rounded-full text-white text-lg font-semibold bg-brand-primary hover:bg-brand-secondary transition-colors glow-button">
-                    Get in Touch
+                <a href="#contact" class="px-8 py-4 rounded-full text-brand-black text-lg font-semibold bg-brand-white hover:bg-brand-white/80 transition-colors glow-button">
+                    Get a Quote
                 </a>
-                <a href="#gallery" class="px-8 py-4 rounded-full text-white text-lg font-semibold bg-white/20 backdrop-blur-sm border border-white/30 hover:bg-white/30 transition-all duration-300">
-                    Explore Work
+                <a href="#gallery" class="px-8 py-4 rounded-full text-brand-white text-lg font-semibold bg-brand-black/70 backdrop-blur-sm border border-brand-black/30 hover:bg-brand-black transition-all duration-300">
+                    View Portfolio
                 </a>
             </div>
         </div>
     </section>
 
-    <!-- Main Content Wrapper --><main class="container mx-auto px-6 py-24">
+    <!-- Main Content Wrapper -->
+    <main class="container mx-auto px-6">
 
-        <!-- About Section --><section id="about" class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center my-24 overflow-hidden p-8 rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl">
+        <!-- About Section -->
+        <!-- UPDATED: Added 'content-section' class -->
+        <section id="about" class="content-section grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             <div class="gsap-animated" data-anim="fade-right">
-                <!-- ADMIN NOTE: Replace 'src' with an image or video from your drive. --><img src="https://placehold.co/600x600/3b82f6/white?text=About+Us" alt="Our Team" class="rounded-xl shadow-2xl w-full h-auto object-cover">
+                <!-- ADMIN NOTE: Replace 'src' with an image of the artist. -->
+                <img src="https://placehold.co/600x600/000000/FFD400?text=The+Artist" alt="The artist at work" class="rounded-xl shadow-2xl w-full h-auto object-cover">
             </div>
             <div class="gsap-animated" data-anim="fade-left">
-                <span class="text-brand-primary font-semibold">Our Mission</span>
-                <h2 class="text-4xl md:text-5xl font-bold my-4 font-sketch">We Bring Brands to Life</h2>
-                <p class="text-lg text-brand-text/80 leading-relaxed">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque leo nec libero facilisis, ac dapibus dolor feugiat. Vivamus in sem quis sapien consequat efficitur.
+                <!-- UPDATED: Content -->
+                <span class="text-brand-text-light font-semibold">About the Artist</span>
+                <h2 class="text-4xl md:text-5xl font-bold my-4 font-sketch text-brand-black" data-editable="about-headline">
+                    Bringing Your Vision to Life
+                </h2>
+                <p class="text-lg text-brand-text-light leading-relaxed" data-editable="about-bio">
+                    I'm a passionate muralist dedicated to transforming spaces with unique, large-scale art. From vibrant commercial branding to serene residential pieces, I collaborate with you to create art that tells a story.
                     <br><br>
-                    Our passion is combining art and technology to create unforgettable digital stories that captivate and convert.
+                    My passion is combining traditional techniques with modern design to create unforgettable environments.
                 </p>
             </div>
         </section>
 
-        <!-- Services Section --><section id="services" class="my-32 text-center overflow-hidden p-8 rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl">
-            <span class="text-brand-primary font-semibold gsap-animated" data-anim="fade-up">What We Do</span>
-            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch" data-anim="fade-up" data-delay="0.1">Our Services</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                <!-- Service Card 1 --><div class="service-card bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.2">
-                    <div class="text-5xl mb-4 text-brand-primary">
-                        <!-- Replaced "Icon1" with SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                        </svg>
+        <!-- Services Section -->
+        <!-- UPDATED: Added 'content-section' class and new content -->
+        <section id="services" class="content-section text-center">
+            <span class="text-brand-text-light font-semibold gsap-animated" data-anim="fade-up">What I Do</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch text-brand-black" data-anim="fade-up" data-delay="0.1">My Services</h2>
+            
+            <!-- UPDATED: 5 New Service Cards -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6 mt-12" data-editable-section="services-list">
+                
+                <!-- Service Card 1 -->
+                <div class="service-card bg-brand-bg-darker p-6 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.2">
+                    <div class="text-5xl mb-4 text-brand-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M11.25 11.25l.041-.02a.75.75 0 011.063.852l-.708 2.836a.75.75 0 001.063.853l.041-.021M21 12a9 9 0 11-18 0 9 9 0 0118 0zm-9-3.75h.008v.008H12V8.25z" /></svg>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-3 font-sketch">Web Design</h3>
-                    <p class="text-brand-text/80">Stunning, responsive websites built for performance and visual impact.</p>
+                    <h3 class="text-2xl font-semibold mb-3 font-sketch">Custom Wall Murals</h3>
+                    <p class="text-brand-text-light">On-site painting for residential & commercial spaces.</p>
                 </div>
-                <!-- Service Card 2 --><div class="service-card bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.4">
-                    <div class="text-5xl mb-4 text-brand-secondary">
-                        <!-- Replaced "Icon2" with SVG -->
-                         <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
-                        </svg>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card bg-brand-bg-darker p-6 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.3">
+                    <div class="text-5xl mb-4 text-brand-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 7.125C2.25 6.504 2.754 6 3.375 6h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6C2.754 12 2.25 11.496 2.25 10.875V7.125zM14.25 7.125c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6c-.621 0-1.125-.504-1.125-1.125V7.125zM2.25 15C2.25 14.379 2.754 13.875 3.375 13.875h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6C2.754 19.125 2.25 18.621 2.25 18V15zM14.25 15c0-.621.504-1.125 1.125-1.125h6c.621 0 1.125.504 1.125 1.125v3.75c0 .621-.504 1.125-1.125 1.125h-6c-.621 0-1.125-.504-1.125-1.125V15z" /></svg>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-3 font-sketch">Motion Graphics</h3>
-                    <p class="text-brand-text/80">Engaging video animations that explain and entertain.</p>
+                    <h3 class="text-2xl font-semibold mb-3 font-sketch">3D Wall Textures</h3>
+                    <p class="text-brand-text-light">Sculpted finishes and mixed-media installations.</p>
                 </div>
-                <!-- Service Card 3 --><div class="service-card bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.6">
-                    <div class="text-5xl mb-4 text-brand-accent">
-                        <!-- Replaced "Icon3" with SVG -->
-                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                          <path stroke-linecap="round" stroke-linejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                        </svg>
+
+                <!-- Service Card 3 -->
+                <div class="service-card bg-brand-bg-darker p-6 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.4">
+                    <div class="text-5xl mb-4 text-brand-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a.75.75 0 001.06-1.06L15.75 15.75M3 13.5a9 9 0 1118 0v-6a9 9 0 00-18 0v6z" /></svg>
                     </div>
-                    <h3 class="text-2xl font-semibold mb-3 font-sketch">Brand Identity</h3>
-                    <p class="text-brand-text/80">Crafting unique logos and styles that resonate with your audience.</p>
+                    <h3 class="text-2xl font-semibold mb-3 font-sketch">Digital Mockups</h3>
+                    <p class="text-brand-text-light">Photoshop/3D mockups and AR previews.</p>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="service-card bg-brand-bg-darker p-6 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.5">
+                    <div class="text-5xl mb-4 text-brand-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-3.867 8.287 8.287 0 003 2.47z" /><path stroke-linecap="round" stroke-linejoin="round" d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 font-sketch">Live Painting</h3>
+                    <p class="text-brand-text-light">Live events, workshops, and branding activations.</p>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="service-card bg-brand-bg-darker p-6 rounded-xl shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.6">
+                    <div class="text-5xl mb-4 text-brand-black">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="w-16 h-16 mx-auto" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75M21 12c0 1.268-.63 2.4-1.683 3.066M21 12a8.97 8.97 0 00-1.683-5.934M3.317 15.066A9.002 9.002 0 0112 3c1.268 0 2.4.63 3.066 1.683M3.317 15.066l-.652.382a9.002 9.002 0 01-1.98-5.62M3.317 15.066A8.97 8.97 0 006.038 19.048M17.962 4.952a8.97 8.97 0 012.625 5.62m-2.625-5.62l.652-.382a9.002 9.002 0 011.98 5.62M17.962 4.952A9.002 9.002 0 0112 21c-1.268 0-2.4-.63-3.066-1.683m7.732-14.366A8.97 8.97 0 0017.962 4.952z" /></svg>
+                    </div>
+                    <h3 class="text-2xl font-semibold mb-3 font-sketch">Restoration</h3>
+                    <p class="text-brand-text-light">Touch-ups, protective coatings, and weatherproofing.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Gallery Section --><section id="gallery" class="my-32 overflow-hidden p-8 rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl">
-            <span class="text-brand-primary font-semibold gsap-animated" data-anim="fade-up">Our Work</span>
-            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch" data-anim="fade-up" data-delay="0.1">Animated Gallery</h2>
-            <p class="text-lg text-brand-text/80 mb-12 max-w-2xl gsap-animated" data-anim="fade-up" data-delay="0.2">
-                A showcase of our projects. Click any item to see it in detail.
+        <!-- Gallery Section -->
+        <!-- UPDATED: Added 'content-section' class and new gallery item structure -->
+        <section id="gallery" class="content-section">
+            <span class="text-brand-text-light font-semibold gsap-animated" data-anim="fade-up">My Work</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch text-brand-black" data-anim="fade-up" data-delay="0.1">Portfolio Gallery</h2>
+            <p class="text-lg text-brand-text-light mb-12 max-w-2xl gsap-animated" data-anim="fade-up" data-delay="0.2">
+                A showcase of projects. Hover to pause, click to enlarge.
             </p>
 
             <!-- 
                 ADMIN NOTE: 
-                To add new items to the gallery, copy one of the 'div.gallery-item' blocks.
-                - For an IMAGE: Update the 'data-src' on the div and the 'src' on the img.
-                - For a VIDEO: 
-                    1. Add 'data-video-src="YOUR_VIDEO_URL.mp4"' to the 'div.gallery-item'.
-                    2. Update the 'src' on the 'img' to be a thumbnail/poster for the video.
-                - Animation: Change 'data-anim-gallery' to one of: 
-                  "fade-up", "slide-left", "slide-right", "zoom-in", "blur-in"
-            --><div class="gallery-container">
+                To add new items:
+                1. Copy a 'div.gallery-item' block.
+                2. Add 'data-caption="Your Project Title"'.
+                3. For a SINGLE image:
+                   - Add 'data-images="URL_TO_YOUR_IMAGE.jpg"'.
+                4. For MULTIPLE images (auto-cycling):
+                   - Add 'data-images="url1.jpg,url2.jpg,url3.jpg"'.
+                5. For a VIDEO:
+                   - Add 'data-images="URL_TO_YOUR_VIDEO.mp4"'.
+                   - The system will auto-detect the .mp4 and create a video player in the lightbox.
+            -->
+            <div class="gallery-container" data-editable-section="gallery-list">
                 
-                <!-- Gallery Item 1 (Image) --><div class="gallery-item relative cursor-pointer" 
+                <!-- Gallery Item 1 (Multi-Image) -->
+                <div class="gallery-item" 
                      data-anim-gallery="fade-up" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipNNkElcJ99CONtGZ6NLFV97TBW-3dW3xqrPgDaj=s1360-w1360-h1020-rw">
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipNNkElcJ99CONtGZ6NLFV97TBW-3dW3xqrPgDaj=s1360-w1360-h1020-rw" alt="Gallery Image 1" loading="lazy">
+                     data-caption="Downtown Commercial Mural"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipNNkElcJ99CONtGZ6NLFV97TBW-3dW3xqrPgDaj=s1360-w1360-h1020-rw,https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw,https://lh3.googleusercontent.com/p/AF1QipOHh6Y2E9pFSbbIyf3JOeKPOnOfaqhuHHbebjWp=s1360-w1360-h1020-rw">
+                    <!-- Images will be injected by JS -->
+                    <div class="overlay">Downtown Commercial Mural</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
                 </div>
 
-                <!-- Gallery Item 2 (Image) --><div class="gallery-item relative cursor-pointer" 
+                <!-- Gallery Item 2 (Single Image) -->
+                <div class="gallery-item" 
                      data-anim-gallery="slide-left" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw">
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw" alt="Gallery Image 2" loading="lazy">
+                     data-caption="Residential Feature Wall"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipMEQKlJmWsEzF-6u7h0WiwHg17GcJnstAN0FQtS=s1360-w1360-h1020-rw">
+                    <div class="overlay">Residential Feature Wall</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
                 </div>
 
-                <!-- Gallery Item 3 (Image) --><div class="gallery-item relative cursor-pointer" 
+                <!-- Gallery Item 3 (Single Image) -->
+                <div class="gallery-item" 
                      data-anim-gallery="zoom-in" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipOHh6Y2E9pFSbbIyf3JOeKPOnOfaqhuHHbebjWp=s1360-w1360-h1020-rw">
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipOHh6Y2E9pFSbbIyf3JOeKPOnOfaqhuHHbebjWp=s1360-w1360-h1020-rw" alt="Gallery Image 3" loading="lazy">
-                </div>
-
-                <!-- Gallery Item 4 (Image) --><div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="slide-right" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw">
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipPCFVgWfceSg8aN5AE95SYWk6yWC_hHAjNtmbJl=s1360-w1360-h1020-rw" alt="Gallery Image 4" loading="lazy">
+                     data-caption="Office Branding"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipNzSGaMgxKyG8AuCMurYRs_PvD8TJp5sLf07Cwq=s1360-w1360-h1020-rw">
+                    <div class="overlay">Office Branding</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
                 </div>
                 
-                <!-- Gallery Item 5 (Image) --><div class="gallery-item relative cursor-pointer" 
+                <!-- Gallery Item 4 (Multi-Image + Video) -->
+                <div class="gallery-item" 
                      data-anim-gallery="blur-in" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipMEQKlJmWsEzF-6u7h0WiwHg17GcJnstAN0FQtS=s1360-w1360-h1020-rw">
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipMEQKlJmWsEzF-6u7h0WiwHg17GcJnstAN0FQtS=s1360-w1360-h1020-rw" alt="Gallery Image 5" loading="lazy">
+                     data-caption="Live Event Painting (Video)"
+                     data-images="https://placehold.co/600x450/f97316/white?text=Project+Video+Cover,https://assets.mixkit.co/videos/preview/mixkit-abstract-glowing-lines-loop-4212-large.mp4,https://lh3.googleusercontent.com/p/AF1QipOTHyUzlCYXD4Qeei8MSdK6atEnG_5vDaGBmTSA=s1360-w1360-h1020-rw">
+                    <div class="overlay">Live Event Painting (Video)</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
                 </div>
 
-                <!-- Gallery Item 6 (Image) --><div class="gallery-item relative cursor-pointer" 
+                <!-- Gallery Item 5 (Single Image) -->
+                <div class="gallery-item" 
                      data-anim-gallery="fade-up" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipNzSGaMgxKyG8AuCMurYRs_PvD8TJp5sLf07Cwq=s1360-w1360-h1020-rw">
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipNzSGaMgxKyG8AuCMurYRs_PvD8TJp5sLf07Cwq=s1360-w1360-h1020-rw" alt="Gallery Image 6" loading="lazy">
+                     data-caption="Abstract Texture"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipNee1GjeqCyOs4smleie5H9eXRdslzJi0hVwEAv=s1360-w1360-h1020-rw">
+                    <div class="overlay">Abstract Texture</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
                 </div>
 
-                <!-- Gallery Item 7 (Image) --><div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="slide-left" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipOTHyUzlCYXD4Qeei8MSdK6atEnG_5vDaGBmTSA=s1360-w1360-h1020-rw">
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipOTHyUzlCYXD4Qeei8MSdK6atEnG_5vDaGBmTSA=s1360-w1360-h1020-rw" alt="Gallery Image 7" loading="lazy">
-                </div>
-
-                <!-- Gallery Item 8 (Image) --><div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="zoom-in" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipNee1GjeqCyOs4smleie5H9eXRdslzJi0hVwEAv=s1360-w1360-h1020-rw">
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipNee1GjeqCyOs4smleie5H9eXRdslzJi0hVwEAv=s1360-w1360-h1020-rw" alt="Gallery Image 8" loading="lazy">
-                </div>
-
-                <!-- Gallery Item 9 (Image) --><div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="blur-in" 
-                     data-src="https://lh3.googleusercontent.com/p/AF1QipOAKZ5vWcWoD3BY-lQkw9k36d2Y5CMGCp1zQ0Kf=s1360-w1360-h1020-rw">
-                    <img src="https://lh3.googleusercontent.com/p/AF1QipOAKZ5vWcWoD3BY-lQkw9k36d2Y5CMGCp1zQ0Kf=s1360-w1360-h1020-rw" alt="Gallery Image 9" loading="lazy">
-                </div>
-
-                <!-- Gallery Item 10 (Small Video) --><div class="gallery-item relative cursor-pointer" 
-                     data-anim-gallery="fade-up" 
-                     data-src="https://placehold.co/600x450/f97316/white?text=Project+10+(Video)"
-                     data-video-src="https://assets.mixkit.co/videos/preview/mixkit-abstract-glowing-lines-loop-4212-large.mp4">
-                    <img src="https://placehold.co/600x450/f97316/white?text=Project+10+(Video)" alt="Gallery Video 3" loading="lazy">
-                    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10 p-4 bg-black/50 rounded-full">
-                        <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
-                    </div>
-                </div>
-
-                <!-- Gallery Item 11 (Medium Image) --><div class="gallery-item relative cursor-pointer" 
+                <!-- Gallery Item 6 (Single Image) -->
+                <div class="gallery-item" 
                      data-anim-gallery="slide-right" 
-                     data-src="https://placehold.co/600x600/84cc16/white?text=Project+11">
-                    <img src="https://placehold.co/600x600/84cc16/white?text=Project+11" alt="Gallery Image 11" loading="lazy">
+                     data-caption="Restaurant Interior"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipOAKZ5vWcWoD3BY-lQkw9k36d2Y5CMGCp1zQ0Kf=s1360-w1360-h1020-rw">
+                    <div class="overlay">Restaurant Interior</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
                 </div>
 
-                <!-- Gallery Item 12 (Tall Image) --><div class="gallery-item relative cursor-pointer" 
+                <!-- NEW: Gallery Item 7 (Single Image) -->
+                <div class="gallery-item" 
                      data-anim-gallery="fade-up" 
-                     data-src="https://placehold.co/600x850/3b82f6/white?text=Project+12">
-                    <img src="https://placehold.co/600x850/3b82f6/white?text=Project+12" alt="Gallery Image 12" loading="lazy">
+                     data-caption="Geometric Mural"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipP0CI58F4T-4IjwW3vzqZw9DNBiPi3HKjvqsRF_=s1360-w1360-h1020-rw">
+                    <div class="overlay">Geometric Mural</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+
+                <!-- NEW: Gallery Item 8 (Single Image) -->
+                <div class="gallery-item" 
+                     data-anim-gallery="slide-left" 
+                     data-caption="Colorful Abstract"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipMWcP3YtoizsX3qI4XEW_XJ_JWQDz2foaxJcYiJ=s1360-w1360-h1020-rw">
+                    <div class="overlay">Colorful Abstract</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+
+                <!-- NEW: Gallery Item 9 (Single Image) -->
+                <div class="gallery-item" 
+                     data-anim-gallery="zoom-in" 
+                     data-caption="Exterior Wall Art"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipNHKOYCVIiVKiJJXfjzlnSzfc2rB22CcHWV56Jm=s1360-w1360-h1020-rw">
+                    <div class="overlay">Exterior Wall Art</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+
+                <!-- NEW: Gallery Item 10 (Single Image) -->
+                <div class="gallery-item" 
+                     data-anim-gallery="slide-right" 
+                     data-caption="Detailed Mural"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipOcUMxRYf9dRTUbLeCQI_IWYisVj5mgXrcHCptg=s1360-w1360-h1020-rw">
+                    <div class="overlay">Detailed Mural</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+
+                <!-- NEW: Gallery Item 11 (Single Image) -->
+                <div class="gallery-item" 
+                     data-anim-gallery="blur-in" 
+                     data-caption="Cafe Interior"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipM_HaZx1yhaHAUGKb9oglYVOqxxjw4q_LUwvp9h=s1360-w1360-h1020-rw">
+                    <div class="overlay">Cafe Interior</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+
+                <!-- NEW: Gallery Item 12 (Single Image) -->
+                <div class="gallery-item" 
+                     data-anim-gallery="fade-up" 
+                     data-caption="Mural Close-up"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipOcUMxRYf9dRTUbLeCQI_IWYisVj5mgXrcHCptg=s1360-w1360-h1020-rw">
+                    <div class="overlay">Mural Close-up</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+
+                <!-- NEW: Gallery Item 13 (Single Image) -->
+                <div class="gallery-item" 
+                     data-anim-gallery="zoom-in" 
+                     data-caption="Studio Work"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipOmVNFuJJG3Z8x_2ZxT11d8lM8a4iTNYdD2pKTB=s1360-w1360-h1020-rw">
+                    <div class="overlay">Studio Work</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+
+                <!-- NEW: Gallery Item 14 (Single Image) -->
+                <div class="gallery-item" 
+                     data-anim-gallery="fade-up" 
+                     data-caption="Interior Wall Design"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipO3IWlSfuubMF_eUO902pDrbxhK-F5Cr3GKgf9c=s1360-w1360-h1020-rw">
+                    <div class="overlay">Interior Wall Design</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+
+                <!-- NEW: Gallery Item 15 (Single Image) -->
+                <div class="gallery-item" 
+                     data-anim-gallery="slide-left" 
+                     data-caption="Exterior Building Mural"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipMwYtSCB5KvhiSvC2Q96X-YYxAXA_pvTv9OUqLF=s1360-w1360-h1020-rw">
+                    <div class="overlay">Exterior Building Mural</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+
+                <!-- NEW: Gallery Item 16 (Single Image) -->
+                <div class="gallery-item" 
+                     data-anim-gallery="blur-in" 
+                     data-caption="Art Close-up"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipMDEXD1EraOLMgyR-dojET-qyERTyusP0d3cyqP=w141-h101-n-k-no-nu">
+                    <div class="overlay">Art Close-up</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+
+                <!-- NEW: Gallery Item 17 (Single Image) -->
+                <div class="gallery-item" 
+                     data-anim-gallery="zoom-in" 
+                     data-caption="Portrait Mural"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipPzieVjty4v5H1126fSd32YW8TQkucXa8_Ufh_2=w141-h176-n-k-no-nu">
+                    <div class="overlay">Portrait Mural</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
+                </div>
+
+                <!-- NEW: Gallery Item 18 (Single Image) -->
+                <div class="gallery-item" 
+                     data-anim-gallery="fade-up" 
+                     data-caption="Black and White Mural"
+                     data-images="https://lh3.googleusercontent.com/p/AF1QipPV5Rd0xH-crBcEXXCZJL_0YQxjHkfbQi6A9UcJ=s1360-w1360-h1020-rw">
+                    <div class="overlay">Black and White Mural</div>
+                    <svg class="sketch-border" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M95,5 V95 H5 V5 H95 Z" vector-effect="non-scaling-stroke"/></svg>
                 </div>
 
             </div>
         </section>
+        
+        <!-- NEW: Reviews Section -->
+        <section id="reviews" class="content-section text-center">
+            <span class="text-brand-text-light font-semibold gsap-animated" data-anim="fade-up">Testimonials</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch text-brand-black" data-anim="fade-up" data-delay="0.1">What Clients Say</h2>
+            <p class="text-lg text-brand-text-light mb-12 max-w-2xl mx-auto gsap-animated" data-anim="fade-up" data-delay="0.2">
+                Real feedback from happy clients.
+                <!-- ADMIN NOTE: Add your Google Place ID to the data-place-id attribute below to fetch live reviews. -->
+            </p>
+            <div 
+                id="reviews-placeholder" 
+                class="relative"
+                data-editable="google-place-id"
+                data-place-id="YOUR_GOOGLE_PLACE_ID_HERE"
+            >
+                <!-- This will be a carousel -->
+                <div class="overflow-hidden relative">
+                    <div id="review-carousel" class="flex">
+                        <!-- Placeholder Review 1 -->
+                        <div class="review-card w-full flex-shrink-0 p-4 md:w-1/2 lg:w-1/3">
+                            <div class="bg-brand-bg-darker p-8 rounded-lg shadow-lg h-full flex flex-col justify-between">
+                                <div class="flex mb-4">
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                </div>
+                                <p class="text-brand-text-light text-left italic mb-6">"Absolutely transformed our office space! The attention to detail was incredible. Couldn't be happier with the result."</p>
+                                <p class="font-bold text-brand-black text-left">— Sarah K.</p>
+                            </div>
+                        </div>
+                        <!-- Placeholder Review 2 -->
+                        <div class="review-card w-full flex-shrink-0 p-4 md:w-1/2 lg:w-1/3">
+                            <div class="bg-brand-bg-darker p-8 rounded-lg shadow-lg h-full flex flex-col justify-between">
+                                <div class="flex mb-4">
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                </div>
+                                <p class="text-brand-text-light text-left italic mb-6">"The live painting event was the highlight of our launch party. So professional and the final piece was stunning."</p>
+                                <p class="font-bold text-brand-black text-left">— Mark T., Event Co.</p>
+                            </div>
+                        </div>
+                        <!-- Placeholder Review 3 -->
+                        <div class="review-card w-full flex-shrink-0 p-4 md:w-1/2 lg:w-1/3">
+                            <div class="bg-brand-bg-darker p-8 rounded-lg shadow-lg h-full flex flex-col justify-between">
+                                <div class="flex mb-4">
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg class="review-star w-6 h-6 filled" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                    <svg class="review-star w-6 h-6" viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+                                </div>
+                                <p class="text-brand-text-light text-left italic mb-6">"Great communication and the digital mockup was spot-on. Made the whole process so easy."</p>
+                                <p class="font-bold text-brand-black text-left">— David L.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Carousel Navigation -->
+                <button id="prev-review" class="absolute top-1/2 left-0 -translate-y-1/2 bg-brand-white/50 hover:bg-brand-white p-2 rounded-full shadow-md transition-all z-10">
+                    <svg class="w-6 h-6 text-brand-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </button>
+                <button id="next-review" class="absolute top-1/2 right-0 -translate-y-1/2 bg-brand-white/50 hover:bg-brand-white p-2 rounded-full shadow-md transition-all z-10">
+                    <svg class="w-6 h-6 text-brand-black" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+                </button>
+            </div>
+        </section>
 
-        <!-- Map Section --><section id="map" class="my-32 overflow-hidden p-8 rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl">
-            <span class="text-brand-primary font-semibold gsap-animated" data-anim="fade-up">Find Us</span>
-            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch" data-anim="fade-up" data-delay="0.1">Our Location</h2>
+        <!-- Map Section -->
+        <!-- UPDATED: Added 'content-section' class and new styling -->
+        <section id="map" class="content-section">
+            <span class="text-brand-text-light font-semibold gsap-animated" data-anim="fade-up">Find Me</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch text-brand-black" data-anim="fade-up" data-delay="0.1">My Studio Location</h2>
             
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-                <div class="md:col-span-2 rounded-xl overflow-hidden shadow-2xl gsap-animated" data-anim="fade-right">
-                    <!-- 
-                        ADMIN NOTE: 
-                        This is a Google Maps embed. Replace the 'src' attribute with your own.
-                        1. Go to Google Maps.
-                        2. Find your location.
-                        3. Click "Share" -> "Embed a map".
-                        4. Copy the 'src' URL and paste it below.
-                        
-                        For a dynamic JS map, you'll need the Google Maps JavaScript API key.
-                        
-                        FALLBACK (OpenStreetMap - No API key needed):
+                <!-- UPDATED: Added .map-container wrapper -->
+                <div class="md:col-span-2 gsap-animated" data-anim="fade-right">
+                    <div class="map-container min-h-[450px]">
+                        <!-- 
+                            ADMIN NOTE: 
+                            Replace the 'src' URL below with your Google Maps embed link.
+                            You will also need to add your API Key in the <script> tag at the
+                            bottom of the page where it says "YOUR_GOOGLE_MAPS_API_KEY".
+                        -->
                         <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.1481134253303!2d77.237274!3d28.564251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce25b5b03f0b3%3A0xe545c61833930e4!2sWall%20Art!5e0!3m2!1sen!2sin!4v1730465138338!5m2!1sen!2sin" 
                             width="100%" 
-                            height="100%" 
-                            frameborder="0" 
-                            scrolling="no" 
-                            marginheight="0" 
-                            marginwidth="0" 
-                            src="https://www.openstreetmap.org/export/embed.html?bbox=-0.13033,51.50325,-0.12233,51.50925&layer=mapnik&marker=51.50625,-0.12633"
-                            class="min-h-[450px]"
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            title="Google Map of studio location"
+                            class="rounded-xl"
                         ></iframe>
-                    --><iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3504.1481134253303!2d77.237274!3d28.564251!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce25b5b03f0b3%3A0xe545c61833930e4!2sWall%20Art!5e0!3m2!1sen!2sin!4v1730465138338!5m2!1sen!2sin" 
-                        width="100%" 
-                        height="450" 
-                        style="border:0;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Google Map of our location"
-                    ></iframe>
+                    </div>
                 </div>
-                <div class="bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="fade-left">
-                    <h3 class="text-2xl font-semibold mb-4">Visit Us</h3>
-                    <address class="not-italic text-brand-text/80 mb-6">
+                <div class="bg-brand-bg-darker p-8 rounded-xl shadow-lg gsap-animated" data-anim="fade-left" data-editable-section="contact-details">
+                    <h3 class="text-2xl font-semibold mb-4 text-brand-black">Visit By Appointment</h3>
+                    <address class="not-italic text-brand-text-light mb-6">
                         A-42, Greater Kailash-1, Block E<br>
-                        Zamrudpur, Greater Kailash<br>
                         New Delhi, Delhi 110048
                     </address>
-                    <h4 class="font-semibold text-lg">Hours</h4>
-                    <p class="text-brand-text/80 mb-6">
-                        Open 24 hours
+                    <h4 class="font-semibold text-lg text-brand-black">Hours</h4>
+                    <p class="text-brand-text-light mb-6">
+                        Mon - Sat: 10am - 6pm
                     </p>
                     <a 
-                        href="https://maps.google.com/?q=A-42,+Greater+Kailash-1,+Block+E,+Zamrudpur,+Greater+Kailash,+New+Delhi,+Delhi+110048"
+                        href="https://maps.google.com/?q=A-42,+Greater+Kash-1,+Block+E,+Zamrudpur,+Greater+Kailash,+New+Delhi,+Delhi+110048"
                         target="_blank"
                         rel="noopener noreferrer"
-                        class="inline-block w-full text-center px-6 py-3 rounded-full text-white font-semibold bg-brand-primary hover:bg-brand-secondary transition-colors glow-button"
+                        class="inline-block w-full text-center px-6 py-3 rounded-full text-brand-black font-semibold bg-brand-primary hover:bg-yellow-400 transition-colors glow-button"
                     >
                         Get Directions
                     </a>
@@ -587,49 +898,48 @@
             </div>
         </section>
 
-        <!-- Contact Section --><section id="contact" class="my-32 overflow-hidden p-8 rounded-2xl bg-white/90 backdrop-blur-sm shadow-xl">
-            <span class="text-brand-primary font-semibold gsap-animated" data-anim="fade-up">Contact</span>
-            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch" data-anim="fade-up" data-delay="0.1">Let's Create Together</h2>
-            <p class="text-lg text-brand-text/80 mb-12 max-w-2xl gsap-animated" data-anim="fade-up" data-delay="0.2">
-                Have an idea? We'd love to hear about it. Fill out the form or reach out directly.
+        <!-- Contact Section -->
+        <!-- UPDATED: Added 'content-section' class and new styling -->
+        <section id="contact" class="content-section">
+            <span class="text-brand-text-light font-semibold gsap-animated" data-anim="fade-up">Contact</span>
+            <h2 class="text-4xl md:text-5xl font-bold my-4 gsap-animated font-sketch text-brand-black" data-anim="fade-up" data-delay="0.1">Let's Create Together</h2>
+            <p class="text-lg text-brand-text-light mb-12 max-w-2xl gsap-animated" data-anim="fade-up" data-delay="0.2">
+                Have an idea? A blank wall? I'd love to hear about it.
             </p>
 
             <form action="#" method="POST" class="max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div class="gsap-animated" data-anim="fade-up" data-delay="0.3">
-                    <label for="name" class="block text-sm font-medium text-brand-text/80 mb-2">Name</label>
+                    <label for="name" class="block text-sm font-medium text-brand-text-light mb-2">Name</label>
                     <input type="text" id="name" name="name" required
-                           class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all">
+                           class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border-2 border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all">
                 </div>
                 <div class="gsap-animated" data-anim="fade-up" data-delay="0.4">
-                    <label for="email" class="block text-sm font-medium text-brand-text/80 mb-2">Email</label>
+                    <label for="email" class="block text-sm font-medium text-brand-text-light mb-2">Email</label>
                     <input type="email" id="email" name="email" required
-                           class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all">
+                           class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border-2 border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all">
                 </div>
                 <div class="md:col-span-2 gsap-animated" data-anim="fade-up" data-delay="0.5">
-                    <label for="phone" class="block text-sm font-medium text-brand-text/80 mb-2">Phone (Optional)</label>
+                    <label for="phone" class="block text-sm font-medium text-brand-text-light mb-2">Phone (Optional)</label>
                     <input type="tel" id="phone" name="phone"
-                           class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all">
+                           class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border-2 border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all">
                 </div>
                 <div class="md:col-span-2 gsap-animated" data-anim="fade-up" data-delay="0.6">
-                    <label for="message" class="block text-sm font-medium text-brand-text/80 mb-2">Message</label>
+                    <label for="message" class="block text-sm font-medium text-brand-text-light mb-2">Tell me about your wall</label>
                     <textarea id="message" name="message" rows="5" required
-                              class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all"></textarea>
+                              class="w-full px-4 py-3 rounded-lg bg-brand-bg-darker border-2 border-transparent focus:border-brand-primary focus:ring-2 focus:ring-brand-primary/50 outline-none transition-all"></textarea>
                 </div>
                 <div class="md:col-span-2 text-center gsap-animated" data-anim="fade-up" data-delay="0.7">
                     <button type="submit"
-                            class="px-10 py-4 rounded-full text-white text-lg font-semibold bg-brand-primary hover:bg-brand-secondary transition-colors glow-button">
+                            class="px-10 py-4 rounded-full text-brand-black text-lg font-semibold bg-brand-primary hover:bg-yellow-400 transition-colors glow-button">
                         Send Message
                     </button>
                 </div>
             </form>
             
             <div class="text-center mt-12 space-y-4">
-                 <p class="text-brand-text/80 gsap-animated" data-anim="fade-up" data-delay="0.8">Or reach us on:</p>
-                 <div class="flex justify-center gap-6">
-                     <!-- ADMIN NOTE: Replace '#' with your WhatsApp link --><a href="#" class="px-6 py-3 rounded-full font-semibold bg-green-500 text-white hover:bg-green-600 transition-all shadow-lg gsap-animated" data-anim="pop-in" data-delay="0.9">
-                         WhatsApp Us
-                     </a>
-                     <!-- ADMIN NOTE: Replace '1234567890' with your phone number --><a href="tel:09999226846" class="px-6 py-3 rounded-full font-semibold bg-brand-accent text-white hover:bg-brand-accent/80 transition-all shadow-lg gsap-animated" data-anim="pop-in" data-delay="1.0">
+                 <p class="text-brand-text-light gsap-animated" data-anim="fade-up" data-delay="0.8">Or reach out directly:</p>
+                 <div class="flex justify-center gap-6" data-editable-section="contact-links">
+                     <a href="tel:09999226846" class="px-6 py-3 rounded-full font-semibold bg-brand-black text-brand-white hover:bg-brand-black/80 transition-all shadow-lg gsap-animated" data-anim="pop-in" data-delay="1.0">
                          Call 099992 26846
                      </a>
                  </div>
@@ -639,59 +949,77 @@
 
     </main>
 
-    <!-- Footer --><footer class="bg-brand-primary text-white py-16">
+    <!-- Footer -->
+    <!-- UPDATED: New color scheme -->
+    <footer class="bg-brand-black text-brand-primary py-16">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
             <div>
                 <a href="#" class="text-3xl font-bold font-sketch">
-                    Wall Art
+                    The Muralist
                 </a>
-                <p class="mt-4 text-white/80">Crafting digital dreams into reality.</p>
+                <p class="mt-4 text-white/80">Walls That Talk.</p>
             </div>
             <div>
-                <h4 class="text-xl font-semibold mb-4">Quick Links</h4>
+                <h4 class="text-xl font-semibold mb-4 text-brand-yellow">Quick Links</h4>
                 <ul class="space-y-2">
-                    <li><a href="#about" class="hover:underline text-white/80">About</a></li>
-                    <li><a href="#services" class="hover:underline text-white/80">Services</a></li>
-                    <li><a href="#gallery" class="hover:underline text-white/80">Gallery</a></li>
-                    <li><a href="#contact" class="hover:underline text-white/80">Contact</a></li>
+                    <li><a href="#about" class="hover:text-brand-primary text-white/80">About</a></li>
+                    <li><a href="#services" class="hover:text-brand-primary text-white/80">Services</a></li>
+                    <li><a href="#gallery" class="hover:text-brand-primary text-white/80">Gallery</a></li>
+                    <li><a href="#contact" class="hover:text-brand-primary text-white/80">Contact</a></li>
                 </ul>
             </div>
             <div>
-                <h4 class="text-xl font-semibold mb-4">Connect</h4>
-                <div class="flex justify-center md:justify-start space-x-4">
-                    <!-- ADMIN NOTE: Replace '#' with your social media links --><a href="#" aria-label="Instagram" class="text-2xl hover:text-brand-secondary transition-all">Insta</a>
-                    <a href="#" aria-label="LinkedIn" class="text-2xl hover:text-brand-secondary transition-all">Linked</a>
-                    <a href="#" aria-label="Twitter" class="text-2xl hover:text-brand-secondary transition-all">Twit</a>
+                <h4 class="text-xl font-semibold mb-4 text-brand-yellow">Connect</h4>
+                <div class="flex justify-center md:justify-start space-x-4" data-editable-section="social-links">
+                    <!-- ADMIN NOTE: Replace '#' with your social media links -->
+                    <a href="#" aria-label="Instagram" class="text-2xl text-white/80 hover:text-brand-primary transition-all">Insta</a>
+                    <a href="#" aria-label="Pinterest" class="text-2xl text-white/80 hover:text-brand-primary transition-all">Pin</a>
+                    <a href="#" aria-label="Facebook" class="text-2xl text-white/80 hover:text-brand-primary transition-all">Face</a>
                 </div>
             </div>
         </div>
-        <div class="container mx-auto px-6 mt-12 text-center text-white/70 border-t border-white/20 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p>&copy; 2025 Wall Art. All rights reserved.</p>
-            <a href="#hero" class="mt-4 md:mt-0 px-4 py-2 rounded-full bg-white/20 hover:bg-white/30 transition-all">
+        <div class="container mx-auto px-6 mt-12 text-center footer-bottom border-t pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p>&copy; 2025 The Muralist. All rights reserved.</p>
+            <a href="#hero" class="mt-4 md:mt-0 px-4 py-2 rounded-full transition-all">
                 Back to Top &uarr;
             </a>
         </div>
     </footer>
 
-    <!-- Lightbox Modal (NEW: Updated with Swiper structure) --><div id="lightbox">
+    <!-- Lightbox Modal (Swiper structure) -->
+    <div id="lightbox">
         <button id="close-lightbox" title="Close">&times;</button>
         <div id="lightbox-content" class="h-full w-full p-4 md:p-8">
-            <!-- Swiper --><div class="swiper lightbox-swiper h-full w-full">
+            <div class="swiper lightbox-swiper h-full w-full">
                 <div class="swiper-wrapper">
-                    <!-- Slides will be dynamically injected by JS --></div>
-                <!-- Add Pagination --><div class="swiper-pagination"></div>
-                <!-- Add Navigation --><div class="swiper-button-next"></div>
+                    <!-- Slides will be dynamically injected by JS -->
+                </div>
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
         </div>
     </div>
+    
+    <!-- Google Maps API Key (Optional, for JS map) -->
+    <!--
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_GOOGLE_MAPS_API_KEY&callback=initMap" async defer></script>
+    <script>
+        function initMap() {
+            // JS Map logic here
+        }
+    </script>
+    -->
 
-
-    <!-- Application JavaScript --><script>
+    <!-- Application JavaScript -->
+    <script>
         document.addEventListener('DOMContentLoaded', () => {
             
             // --- GSAP & ScrollTrigger Setup ---
             gsap.registerPlugin(ScrollTrigger);
+            
+            // Config for gallery image cycling
+            const GALLERY_CYCLE_INTERVAL = 4000; // 4 seconds
 
             // --- Header Scroll Effect ---
             const header = document.getElementById('header');
@@ -699,15 +1027,15 @@
                 start: 'top -80',
                 end: 99999,
                 onUpdate: (self) => {
-                    if (self.direction === 1) { // Scrolling Down
-                        header.classList.add('py-2', 'bg-white/80', 'backdrop-blur-lg', 'shadow-lg');
-                        header.classList.remove('py-4', 'bg-transparent'); // Ensure initial transparent bg is removed
-                    } else { // Scrolling Up
-                        if (window.scrollY < 80) {
-                            header.classList.remove('py-2', 'bg-white/80', 'backdrop-blur-lg', 'shadow-lg');
-                            header.classList.add('py-4', 'bg-transparent');
-                        }
-                    }
+                    const isScrolled = self.scroll() > 80;
+                    // UPDATED: New scroll-state styling
+                    header.classList.toggle('py-2', isScrolled);
+                    header.classList.toggle('bg-brand-white/90', isScrolled);
+                    header.classList.toggle('backdrop-blur-lg', isScrolled);
+                    header.classList.toggle('shadow-lg', isScrolled);
+                    
+                    header.classList.toggle('py-4', !isScrolled);
+                    header.classList.toggle('bg-transparent', !isScrolled);
                 }
             });
 
@@ -717,11 +1045,64 @@
             mobileMenuBtn.addEventListener('click', () => {
                 mobileMenu.classList.toggle('hidden');
             });
-            // Close menu on link click
             mobileMenu.querySelectorAll('a').forEach(link => {
                 link.addEventListener('click', () => {
                     mobileMenu.classList.add('hidden');
                 });
+            });
+
+
+            // --- NEW: Hero Animations ---
+            // 1. Staggered letter entrance
+            gsap.to("#hero-headline span", {
+                opacity: 1,
+                y: 0,
+                rotate: 0,
+                duration: 1,
+                stagger: 0.05,
+                ease: 'power3.out',
+                delay: 0.5
+            });
+
+            // 2. SVG Doodle draw-in and float
+            gsap.utils.toArray('.sketch-doodle').forEach(doodle => {
+                const paths = doodle.querySelectorAll('path');
+                
+                // Draw-in
+                gsap.fromTo(paths, 
+                    { strokeDashoffset: 1000 }, 
+                    { 
+                        strokeDashoffset: 0, 
+                        duration: 2, 
+                        ease: 'power2.inOut',
+                        delay: 1,
+                        stagger: 0.2
+                    }
+                );
+                
+                // Float
+                const animType = doodle.dataset.anim;
+                if (animType === 'float-slow') {
+                    gsap.to(doodle, {
+                        y: -15,
+                        x: 10,
+                        rotation: 3,
+                        duration: 8,
+                        ease: 'sine.inOut',
+                        yoyo: true,
+                        repeat: -1
+                    });
+                } else if (animType === 'float-fast') {
+                     gsap.to(doodle, {
+                        y: 10,
+                        x: -5,
+                        rotation: -2,
+                        duration: 6,
+                        ease: 'sine.inOut',
+                        yoyo: true,
+                        repeat: -1
+                    });
+                }
             });
 
 
@@ -734,20 +1115,14 @@
                     opacity: 0,
                     scrollTrigger: {
                         trigger: elem,
-                        start: 'top 85%', // Start animation when 85% from top
+                        start: 'top 85%',
                         toggleActions: 'play none none none',
                     },
-                    duration: 1, // Default duration
-                    ease: 'power3.out', // Default ease
+                    duration: 1,
+                    ease: 'power3.out',
                     delay: delay
                 };
 
-                if (animType === 'hero-content') {
-                    // Special case for hero content (no ScrollTrigger)
-                    delete animProps.scrollTrigger;
-                    gsap.from(elem, { opacity: 0, y: 30, duration: 1, delay: 0.5, ease: 'power3.out' });
-                    return; // Skip rest of the logic
-                }
                 if (animType === 'fade-up') {
                     animProps.y = 50;
                 } else if (animType === 'fade-left') {
@@ -760,118 +1135,190 @@
 
                 gsap.from(elem, animProps);
             });
-
-
-            // --- Gallery GSAP Animations ---
-            gsap.utils.toArray('.gallery-item').forEach(item => {
-                const animType = item.dataset.animGallery || 'fade-up';
-                let animProps = {
-                    opacity: 0,
-                    scrollTrigger: {
-                        trigger: item,
-                        start: 'top 90%',
-                        toggleActions: 'play none none none',
-                    },
-                    duration: 0.8,
-                    ease: 'power3.out'
-                };
-
-                if (animType === 'fade-up') {
-                    animProps.y = 60;
-                } else if (animType === 'slide-left') {
-                    animProps.x = 100;
-                } else if (animType === 'slide-right') {
-                    animProps.x = -100;
-                } else if (animType === 'zoom-in') {
-                    animProps.scale = 0.8;
-                } else if (animType === 'blur-in') {
-                    animProps.filter = 'blur(10px)';
-                    animProps.scale = 1.05;
-                }
-                
-                gsap.from(item, animProps);
-
-                // Add tilt effect on hover
-                item.addEventListener('mousemove', (e) => {
-                    const rect = item.getBoundingClientRect();
-                    const x = e.clientX - rect.left - rect.width / 2;
-                    const y = e.clientY - rect.top - rect.height / 2;
-                    const rotateX = -y / 20; // Max rotation
-                    const rotateY = x / 20;
-                    gsap.to(item, {
-                        rotationX: rotateX,
-                        rotationY: rotateY,
-                        transformPerspective: 1000,
-                        scale: 1.03,
-                        ease: 'power1.out',
-                        duration: 0.4
+            
+            // --- NEW: Gallery Star Draw Animation ---
+            ScrollTrigger.batch(".review-star", {
+                onEnter: batch => {
+                    gsap.to(batch, {
+                        strokeDashoffset: 0,
+                        stagger: 0.05,
+                        duration: 0.8,
+                        ease: "power2.out"
                     });
-                });
-
-                item.addEventListener('mouseleave', () => {
-                    gsap.to(item, {
-                        rotationX: 0,
-                        rotationY: 0,
-                        scale: 1,
-                        ease: 'power1.out',
-                        duration: 0.4
-                    });
-                });
+                },
+                start: "top 90%",
+                once: true
             });
 
-            // --- Lightbox Logic (NEW: Replaced with Swiper Carousel logic) ---
+
+            // --- NEW: Gallery Item Setup (Multi-Image Cycling) ---
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const allSlidesData = []; // For lightbox
+            
+            galleryItems.forEach((item, index) => {
+                const imagesAttr = item.dataset.images;
+                const caption = item.dataset.caption || "View Project";
+                item.querySelector('.overlay').textContent = caption;
+                
+                let cycleInterval;
+                let urls = [];
+                let itemSlides = []; // Slides for this specific item (for lightbox)
+
+                if (imagesAttr) {
+                    urls = imagesAttr.split(',').map(url => url.trim());
+                }
+
+                if (urls.length === 0) {
+                    // Fallback in case of empty data-images
+                    console.warn("Gallery item has no data-images", item);
+                    const fallbackImg = document.createElement('img');
+                    fallbackImg.src = 'https://placehold.co/600x600/e5e7eb/9ca3af?text=No+Image';
+                    fallbackImg.alt = "Placeholder";
+                    fallbackImg.className = "gallery-image single active";
+                    item.prepend(fallbackImg);
+                    itemSlides.push({ src: fallbackImg.src, type: 'image' });
+                    
+                } else if (urls.length === 1) {
+                    // Single image
+                    const img = document.createElement('img');
+                    img.src = urls[0];
+                    img.alt = caption;
+                    img.loading = 'lazy';
+                    img.className = 'gallery-image single active'; // 'single' class prevents absolute positioning
+                    item.prepend(img);
+                    itemSlides.push({ src: urls[0], type: urls[0].endsWith('.mp4') ? 'video' : 'image' });
+
+                } else {
+                    // Multi-image cycling
+                    urls.forEach((url, i) => {
+                        const img = document.createElement('img');
+                        img.src = url;
+                        img.alt = `${caption} - Image ${i + 1}`;
+                        img.loading = 'lazy';
+                        img.className = 'gallery-image';
+                        if (i === 0) {
+                            img.classList.add('active'); // Start with first image
+                        }
+                        item.prepend(img); // Prepend to stack them
+                        itemSlides.push({ src: url, type: url.endsWith('.mp4') ? 'video' : 'image' });
+                    });
+                    
+                    // Start cycling
+                    const startCycling = () => {
+                        cycleInterval = setInterval(() => {
+                            const active = item.querySelector('.gallery-image.active');
+                            let next = active.nextElementSibling;
+                            // Check if next is not a .gallery-image (could be .overlay or .sketch-border)
+                            while(next && !next.classList.contains('gallery-image')) {
+                                next = next.nextElementSibling;
+                            }
+                            
+                            if (!next) {
+                                // Loop back to first image (which is last in DOM due to prepend)
+                                next = item.querySelector('.gallery-image:last-of-type');
+                            }
+                            
+                            active.classList.remove('active');
+                            next.classList.add('active');
+                        }, GALLERY_CYCLE_INTERVAL);
+                    };
+
+                    const stopCycling = () => {
+                        clearInterval(cycleInterval);
+                    };
+
+                    item.addEventListener('mouseenter', stopCycling);
+                    item.addEventListener('mouseleave', startCycling);
+                    
+                    startCycling();
+                }
+                
+                // Add this item's slides to the global list for the lightbox
+                allSlidesData[index] = itemSlides;
+            });
+
+
+            // --- NEW: Gallery Grid Motion ---
+            const galleryContainer = document.querySelector('.gallery-container');
+            if (galleryContainer) {
+                galleryContainer.addEventListener('mousemove', (e) => {
+                    const rect = galleryContainer.getBoundingClientRect();
+                    const x = (e.clientX - rect.left) / rect.width - 0.5; // -0.5 to 0.5
+                    const y = (e.clientY - rect.top) / rect.height - 0.5; // -0.5 to 0.5
+                    
+                    gsap.to(galleryContainer, {
+                        rotationY: x * 5, // Max 5deg tilt
+                        rotationX: -y * 5,
+                        transformPerspective: 1000,
+                        ease: 'power1.out',
+                        duration: 0.8
+                    });
+                });
+                
+                galleryContainer.addEventListener('mouseleave', () => {
+                    gsap.to(galleryContainer, {
+                        rotationY: 0,
+                        rotationX: 0,
+                        ease: 'power1.out',
+                        duration: 0.8
+                    });
+                });
+            }
+
+
+            // --- Lightbox Logic (Swiper) ---
             const lightbox = document.getElementById('lightbox');
             const closeLightboxBtn = document.getElementById('close-lightbox');
-            const galleryItems = document.querySelectorAll('.gallery-item');
             const swiperWrapper = document.querySelector('#lightbox-content .swiper-wrapper');
             let lightboxSwiper = null;
 
-            // 1. Gather all slide data on load
-            const slidesData = Array.from(galleryItems).map(item => ({
-                imgSrc: item.dataset.src,
-                videoSrc: item.dataset.videoSrc
-            }));
+            function openLightbox(itemIndex) {
+                if (!swiperWrapper) return;
+                
+                // Clear existing slides
+                swiperWrapper.innerHTML = '';
+                
+                // Find all *other* items
+                const allItems = Array.from(galleryItems);
+                
+                // Reorder allSlidesData to start with the clicked item's slides
+                const clickedSlides = allSlidesData[itemIndex];
+                let orderedSlides = [...clickedSlides];
 
-            // 2. Create function to open lightbox
-            function openLightbox(index) {
-                // 3. Clear existing slides
-                if (swiperWrapper) {
-                    swiperWrapper.innerHTML = '';
-                }
-
-                // 4. Populate slides
-                slidesData.forEach(slide => {
-                    let slideHTML = '';
-                    if (slide.videoSrc) {
-                        slideHTML = `
-                            <div class="swiper-slide">
-                                <video src="${slide.videoSrc}" controls autoplay loop playsinline poster="${slide.imgSrc || ''}"></video>
-                            </div>
-                        `;
-                    } else if (slide.imgSrc) {
-                        slideHTML = `
-                            <div class="swiper-slide">
-                                <img src="${slide.imgSrc}" alt="Gallery image">
-                            </div>
-                        `;
-                    }
-                    if (swiperWrapper) {
-                        swiperWrapper.innerHTML += slideHTML;
+                // Add slides from other gallery items
+                allSlidesData.forEach((slides, i) => {
+                    if (i !== itemIndex) {
+                        orderedSlides = orderedSlides.concat(slides);
                     }
                 });
+                
+                // Populate slides
+                orderedSlides.forEach(slide => {
+                    let slideHTML = '';
+                    if (slide.type === 'video') {
+                        slideHTML = `
+                            <div class="swiper-slide">
+                                <video src="${slide.src}" controls autoplay loop playsinline poster=""></video>
+                            </div>
+                        `;
+                    } else {
+                        slideHTML = `
+                            <div class="swiper-slide">
+                                <img src="${slide.src}" alt="Gallery image">
+                            </div>
+                        `;
+                    }
+                    swiperWrapper.innerHTML += slideHTML;
+                });
 
-                // 5. Show lightbox
+                // Show lightbox
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
 
-                // 6. Initialize Swiper
+                // Initialize Swiper
                 lightboxSwiper = new Swiper('.lightbox-swiper', {
                     loop: true,
-                    autoplay: {
-                        delay: 3500, // "live animation"
-                        disableOnInteraction: false,
-                    },
-                    initialSlide: index,
+                    initialSlide: 0, // Always start on the first image of the clicked item
                     navigation: {
                         nextEl: '.swiper-button-next',
                         prevEl: '.swiper-button-prev',
@@ -883,36 +1330,32 @@
                     keyboard: {
                         enabled: true,
                     },
-                    // Stop video when sliding
                     on: {
                         slideChange: function () {
                             // Pause video in the previously active slide
-                            if (this.slides[this.previousIndex]) {
-                                const video = this.slides[this.previousIndex].querySelector('video');
-                                if (video) {
-                                    video.pause();
-                                }
+                            const prevSlide = this.slides[this.previousIndex];
+                            if (prevSlide) {
+                                const video = prevSlide.querySelector('video');
+                                if (video) video.pause();
                             }
                         },
-                        transitionEnd: function() {
+                        slideChangeTransitionEnd: function() {
                             // Autoplay video in the new active slide
-                            if (this.slides[this.activeIndex]) {
-                                const video = this.slides[this.activeIndex].querySelector('video');
-                                if (video) {
-                                    video.play();
-                                }
+                            const activeSlide = this.slides[this.activeIndex];
+                            if (activeSlide) {
+                                const video = activeSlide.querySelector('video');
+                                if (video) video.play();
                             }
                         }
                     },
                 });
             }
 
-            // 7. Create function to close lightbox
             function closeLightbox() {
                 lightbox.classList.remove('active');
                 document.body.style.overflow = 'auto';
                 if (lightboxSwiper) {
-                    lightboxSwiper.destroy(true, true); // Destroy instance
+                    lightboxSwiper.destroy(true, true);
                     lightboxSwiper = null;
                 }
                 if (swiperWrapper) {
@@ -920,117 +1363,76 @@
                 }
             }
 
-            // 8. Add click listeners to gallery items
             galleryItems.forEach((item, index) => {
-                item.addEventListener('click', (e) => {
-                    e.preventDefault(); // Prevent any default browser behavior
-                    openLightbox(index);
-                });
+                item.addEventListener('click', () => openLightbox(index));
             });
 
-            // 9. Add close listeners
             closeLightboxBtn.addEventListener('click', closeLightbox);
             lightbox.addEventListener('click', (e) => {
-                // Close if clicking on the background, not the content
                 if (e.target === lightbox) {
                     closeLightbox();
                 }
             });
 
+
             // --- Reviews Carousel Logic ---
             const carousel = document.getElementById('review-carousel');
             const prevBtn = document.getElementById('prev-review');
             const nextBtn = document.getElementById('next-review');
-            const reviewCards = document.querySelectorAll('.review-card');
             
-            // Check if carousel elements exist before proceeding
-            if (carousel && prevBtn && nextBtn && reviewCards.length > 0) {
+            if (carousel && prevBtn && nextBtn) {
+                const reviewCards = carousel.querySelectorAll('.review-card');
                 let currentIndex = 0;
                 let totalItems = reviewCards.length;
-                let itemsToSlide = 1; // Default
-                
-                function updateItemsToSlide() {
+                let itemsVisible = 1;
+
+                function updateCarouselView() {
                     if (window.innerWidth >= 1024) {
-                        itemsToSlide = 3;
+                        itemsVisible = 3;
                     } else if (window.innerWidth >= 768) {
-                        itemsToSlide = 2;
+                        itemsVisible = 2;
                     } else {
-                        itemsToSlide = 1;
+                        itemsVisible = 1;
                     }
-                    // Ensure totalItems is correct if it's not a multiple
-                    totalItems = Math.ceil(reviewCards.length / itemsToSlide) * itemsToSlide;
-                    // Re-append clones if needed to ensure smooth looping
-                    setupCarouselClones();
-                }
-
-                // Clone items for infinite loop illusion
-                function setupCarouselClones() {
-                    // Clear existing clones
-                    carousel.querySelectorAll('.clone').forEach(clone => clone.remove());
                     
-                    if (reviewCards.length <= itemsToSlide) {
-                         prevBtn.style.display = 'none';
-                         nextBtn.style.display = 'none';
-                         return;
-                    } else {
-                        prevBtn.style.display = 'block';
-                        nextBtn.style.display = 'block';
-                    }
-
-                    // Add clones to the end
-                    for(let i = 0; i < itemsToSlide; i++) {
-                        const clone = reviewCards[i].cloneNode(true);
-                        clone.classList.add('clone');
-                        carousel.appendChild(clone);
-                    }
-                    // Add clones to the beginning
-                    for(let i = reviewCards.length - 1; i >= reviewCards.length - itemsToSlide; i--) {
-                        const clone = reviewCards[i].cloneNode(true);
-                        clone.classList.add('clone');
-                        carousel.prepend(clone);
-                    }
-
-                    // Initial position
-                    currentIndex = itemsToSlide;
-                    carousel.style.transition = 'none';
-                    carousel.style.transform = `translateX(-${currentIndex * (100 / itemsToSlide)}%)`;
+                    const cardWidth = 100 / itemsVisible;
+                    carousel.style.transform = `translateX(-${currentIndex * cardWidth}%)`;
+                    
+                    // Update card widths
+                    reviewCards.forEach(card => {
+                        card.style.flex = `0 0 ${cardWidth}%`;
+                        card.style.maxWidth = `${cardWidth}%`;
+                    });
                 }
-
-
+                
                 function moveCarousel(direction) {
-                    carousel.style.transition = 'transform 0.5s ease-in-out';
+                    const maxIndex = totalItems - itemsVisible;
                     currentIndex += direction;
-                    carousel.style.transform = `translateX(-${currentIndex * (100 / itemsToSlide)}%)`;
                     
-                    // Loop check
-                    if (currentIndex >= reviewCards.length + itemsToSlide) {
-                        setTimeout(() => {
-                            carousel.style.transition = 'none';
-                            currentIndex = itemsToSlide;
-                            carousel.style.transform = `translateX(-${currentIndex * (100 / itemsToSlide)}%)`;
-                        }, 500);
-                    } else if (currentIndex <= 0) {
-                         setTimeout(() => {
-                            carousel.style.transition = 'none';
-                            currentIndex = reviewCards.length;
-                            carousel.style.transform = `translateX(-${currentIndex * (100 / itemsToSlide)}%)`;
-                        }, 500);
+                    if (currentIndex < 0) {
+                        currentIndex = maxIndex; // Loop to end
+                    } else if (currentIndex > maxIndex) {
+                        currentIndex = 0; // Loop to start
                     }
+                    
+                    const cardWidth = 100 / itemsVisible;
+                    carousel.style.transition = 'transform 0.5s ease-in-out';
+                    carousel.style.transform = `translateX(-${currentIndex * cardWidth}%)`;
                 }
 
                 nextBtn.addEventListener('click', () => moveCarousel(1));
                 prevBtn.addEventListener('click', () => moveCarousel(-1));
-
-                // Auto-play
-                let autoPlayInterval = setInterval(() => moveCarousel(1), 5000);
-                carousel.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
-                carousel.addEventListener('mouseleave', () => autoPlayInterval = setInterval(() => moveCarousel(1), 5000));
                 
-                // Initial & resize setup
-                updateItemsToSlide();
-                window.addEventListener('resize', updateItemsToSlide);
-            }
+                let autoPlayInterval = setInterval(() => moveCarousel(1), 5000);
+                const reviewSection = document.getElementById('reviews-placeholder');
+                reviewSection.addEventListener('mouseenter', () => clearInterval(autoPlayInterval));
+                reviewSection.addEventListener('mouseleave', () => autoPlayInterval = setInterval(() => moveCarousel(1), 5000));
 
+                updateCarouselView();
+                window.addEventListener('resize', updateCarouselView);
+            }
+            
+            // --- End of DOMContentLoaded ---
         });
     </script>
 </body>
